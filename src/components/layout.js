@@ -1,8 +1,13 @@
 import React, { useEffect } from "react"
-import "../assets/css/style.css"
 import Header from "./Header"
 import Footer from "./Footer"
 
+import "../assets/css/foundation.min.css"
+import "../assets/css/normalize.css"
+import "../assets/style.scss"
+import "../assets/css/media-screens.css"
+import "../assets/css/plugins/font-awesome.min.css"
+import "../assets/css/plugins/jquery.fancybox.min.css"
 
 const Layout = props => {
 

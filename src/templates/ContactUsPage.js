@@ -21,8 +21,8 @@ export const query = graphql`
   }
 `
 
-export default function DefaultTemplate({ data }) {
-  console.log(data);
+export default function ContactUsPage({ data }) {
+    console.log(data);
     return (
         <Layout>
             

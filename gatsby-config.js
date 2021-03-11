@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
+const autoprefixer = require("autoprefixer");
+
 module.exports = {
   /* Your site config here */
   plugins: [
@@ -13,6 +15,13 @@ module.exports = {
           typeName: 'WPGraphQL',
           fieldName: 'wpgraphql',
           url: 'https://wacky-tent.flywheelsites.com/graphql',
+      }
+    },
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [autoprefixer()]
       }
     }
   ],
