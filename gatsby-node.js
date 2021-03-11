@@ -54,13 +54,14 @@ exports.createPages = async({ actions, graphql }) => {
                 })
                 break;
             default:
-                actions.createPage({
-                    path: page.uri,
-                    component: require.resolve("./src/templates/Default.js"),
-                    context: {
-                        id: page.id,
-                    },
-                })
+                // actions.createPage({
+                //     path: page.uri,
+                //     component: require.resolve("./src/templates/Default.js"),
+                //     context: {
+                //         id: page.id,
+                //     },
+                // })
+                break;
         }
     })
 
