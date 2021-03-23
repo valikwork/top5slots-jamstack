@@ -23,6 +23,12 @@ module.exports = {
       options: {
         postCssPlugins: [autoprefixer()]
       }
+    },
+    {
+      resolve: 'gatsby-plugin-apollo',
+      options: {
+        uri: 'https://wacky-tent.flywheelsites.com/graphql'
+      }
     }
   ],
 }

@@ -38,30 +38,37 @@
         font-size: 14px;
         line-height: 30px;
         border-radius: 15px;
+        padding: 8px;
     }
     .btn.long {
         line-height: 24px;
     }
     /* TOP BAR Mobile STYLING */
     .top-bar {
-        background: #2a79ff;
+        background: #373D45;
     }
     .top-bar-section ul li>a {
-        font-family: "Ubuntu", sans-serif;
+        font-family: 'Roboto', sans-serif;
         text-transform: uppercase;
         font-weight: 500;
-        color: white;
+        color: #fff;
         font-size: 13px;
-        background: #2a79ff;
+        background: #373D45;
         padding-top: 5px;
         padding-bottom: 5px;
     }
-    .top-bar.expanded .title-area {
-        background-color: #2a79ff;
+    .top-bar-section ul li{
+        background: #373D45;
     }
-    .top-bar-section ul li:hover>a {
-        background: #4389ff !important;
-        /* change background color if you need */
+    .top-bar.expanded{
+        height: inherit;
+    }
+    .top-bar.expanded .title-area {
+        background-color: #373D45;
+    }
+    .top-bar-section ul li:hover,
+    .top-bar-section ul li:hover > a {
+        background: #c2a57b !important;
     }
     .top-bar.expanded .toggle-topbar a {
         color: #fff;
@@ -1470,6 +1477,254 @@
     .broker-content--third-col:not(:last-of-type) {
         margin-bottom: 15px;
     }
+
+    .main-header{
+        padding: 10px 0;
+        position: relative;
+        z-index: 1;
+    }
+    .menu-new-header-menu-container .menu-item:not(:last-of-type):not(.menu-item-child){
+        margin-right: 0;
+    }
+    .menu-new-header-menu-container .menu-item{
+        padding: 4px 40px;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--home::before,
+    .menu-new-header-menu-container .menu-item.page_icon--review::before,
+    .menu-new-header-menu-container .menu-item.page_icon--categories::before,
+    .menu-new-header-menu-container .menu-item.page_icon--contact-us::before{
+        width: 20px;
+        background-size: contain;
+        height: 100%;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--home::before{
+        left: 13px;
+        height: 17px;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--review::before{
+        left: 13px;
+        height: 18px;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--categories::before{
+        left: 13px;
+        height: 18px;
+        top: 9px;
+        transform: none;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--contact-us::before{
+        left: 13px;
+        height: 18px;
+    }
+    .top-bar-section .has-dropdown>a:after{
+        display: none;
+    }
+    .hero-search-section .home-page-title{
+        /* font-size: 35px; */
+    }
+    .hero-search-section .home-page-subtitle{
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .hero-search-section--content-wrap {
+        padding-top: 50px;
+        padding-bottom: 60px;
+    }
+    .hero-search-section .hero-search input{
+        padding: 25px;
+        font-size: 12px;
+    }
+    .hero-search-section .hero-search button[type=submit] svg{
+        width: 20px;
+        height: 20px;
+    }
+    .hero-search-section .hero-search button[type=submit]{
+        top: 54%;
+    }
+    .tab-list .tab-list-item{
+        font-size: 14px;
+        line-height: 19px;
+        padding: 7px 6px;    
+    }
+    .tab-list .tab-list-item img{
+        max-width: 30px;
+    }
+    .tab-list .tab-list-item:not(:last-of-type):not(.tab-list-active)::after{
+        display: none;
+    }
+    .tab-list .tab-list-item.tab-list-active::before{
+        top: unset;
+        height: 6px;
+    }
+    .tab-content__descr{
+        font-size: 16px;
+    }
+
+    .tab-content__review{
+        flex-direction: column;
+        align-items: center;
+    }
+    .tab-content__review--image-link {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .tab-content__review--image{
+        max-width: 200px;
+    }
+    .tab-content__review--info{
+        margin-right: 0;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .tab-content__review--language,
+    .tab-content__review .rating-box{
+        margin-bottom: 15px;
+    }
+    .bonus-section__recom--heading{
+        align-items: center;
+    }
+    .bonus-section__recom--body .each-review{
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .bonus-section__recom--body .each-review__link{
+        margin-bottom: 15px;
+    }
+    .bonus-section__recom--body .each-review .rating-box{
+        align-items: flex-start;
+    }
+    .bonus-section__recom--body .each-review .info-date{
+        justify-content: flex-start;
+    }
+    .about-us-section__advantages--each .text-section,
+    .about-us-section__advantages--each .image-section{
+        width: 100%;
+        overflow: hidden;
+    }
+    .about-us-section__advantages--each .text-section{
+        padding: 25px;
+    }
+    .about-us-section__advantages--each .text-section h5{
+        font-size: 36px;
+        line-height: 46px;
+    }
+    .posts-section{
+        padding: 40px 0;
+    }
+    .posts-section__heading{
+        margin-bottom: 45px;
+    }
+    .posts-section__grid--each .descr-box{
+        padding: 25px;
+    }
+    .about-us-section__advantages--each.advantage-right,
+    .about-us-section__advantages--each.advantage-left{
+        align-self: unset;
+        flex-direction: column;
+    }
+    .main-footer__bottom-form h4{
+        margin-bottom: 15px;
+        margin-right: 0;
+        font-size: 23px;
+    }
+    .main-footer__bottom-form{
+        justify-content: center;
+    }
+    .games-section__heading{
+        margin: 0 0 50px;
+    }
+    .games-section__category-top span{
+        font-size: 19px;
+        line-height: 21px;
+    }
+    .games-section__category-bottom{
+        flex-direction: column;
+    }
+    .games-section__category-bottom-each:not(:last-of-type){
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .bonus-section__recom--body .each-review__link,
+    .bonus-section__recom--body .each-review .info-box{
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .bonus-section__recom:not(:last-of-type){
+        margin-bottom: 30px;
+    }
+    .main-footer__top{
+        flex-direction: column;
+    }
+    .main-footer__middle{
+        flex-direction: column;
+    }
+    .main-footer__middle-menu:not(:last-of-type){
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+    .main-footer__middle-menu h5{
+        margin-bottom: 30px;
+    }
+    .main-footer__bottom-support{
+        flex-wrap: wrap;
+    }
+    .main-footer__bottom-support a:not(:last-of-type){
+        margin: 10px 15px;
+    }
+    .main-footer__bottom-form form{
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-footer__bottom-form form input[type=text]{
+        border-radius: 30px;
+        padding: 13px 23px;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    .main-footer__bottom-form form button[type=submit]{
+        border-radius: 30px;
+        font-size: 15px;
+        line-height: 18px;
+        padding: 14px 25px;
+    }
+    .main-footer__bottom-copywrite{
+        padding: 0;
+    }
+    .btn-arrow::after{
+        display: none;
+    }
+    .top-bar-section{
+        left: 100%;
+        position: relative;
+        width: 100%;
+    }
+    .expanded .top-bar-section{
+        left: 0;
+        transition: .3s all;
+    }
+    .header-row{
+        display: block;
+    }
+    .menu-new-header-menu-container .menu-item.has-dropdown::after{
+        right: 20px;
+    }
+    
+    .main-header nav.top-bar{
+        overflow: hidden;
+        padding-left: 0;
+    }
+    .top-bar-section .menu-item.expanded .dropdrown_menu{
+        width: 100%;
+        height: auto;
+        position: static !important;
+    }
+    .menu-new-header-menu-container .menu-item .dropdrown_menu .menu-item{
+        padding: 4px 20px;
+    }
+    .menu-new-header-menu-container .menu-item.expanded .dropdrown_menu .menu-item{
+
+    }
 }
 
 
@@ -1595,6 +1850,7 @@
         font-size: 16px;
         line-height: 40px;
         border-radius: 20px;
+        padding: 5px 20px;
     }
     header {
         text-align: center;
@@ -2487,6 +2743,110 @@
     .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col {
         justify-content: center;
     }
+    .main-header{
+        padding: 10px 0;
+    }
+    .menu-new-header-menu-container .menu-item:not(:last-of-type):not(.menu-item-child){
+        margin-right: 50px;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--home::before,
+    .menu-new-header-menu-container .menu-item.page_icon--review::before,
+    .menu-new-header-menu-container .menu-item.page_icon--categories::before,
+    .menu-new-header-menu-container .menu-item.page_icon--contact-us::before{
+        width: 20px;
+        background-size: contain;
+        height: 100%;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--home::before{
+        left: -44%;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--review::before{
+        left: -44%;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--categories::before{
+        left: -7%;
+    }
+    .menu-new-header-menu-container .menu-item.page_icon--contact-us::before{
+        left: -25%;
+    }
+    .hero-search-section .home-page-title{
+        font-size: 35px;
+    }
+    .hero-search-section .home-page-subtitle{
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .hero-search-section--content-wrap {
+        padding-top: 50px;
+        padding-bottom: 60px;
+    }
+    .hero-search-section .hero-search input{
+        padding: 25px 50px;
+    }
+    .hero-search-section .hero-search button[type=submit]{
+        top: 54%;
+    }
+    .tab-list .tab-list-item{
+        font-size: 20px;
+        line-height: 24px;
+        padding: 20px 6px;
+    }
+
+    .tab-content__descr{
+        font-size: 16px;
+    }
+
+    .tab-content__review{
+        flex-wrap: wrap;
+    }
+    .tab-content__review--image-link {
+        margin-right: 15px;
+        margin-bottom: 20px;
+    }
+    .tab-content__review--image{
+        max-width: 200px;
+    }
+    .tab-content__review--info{
+        margin-right: 15px;
+    }
+    .bonus-section__recom--heading{
+        align-items: center;
+    }
+    .bonus-section__recom--body .each-review{
+        flex-wrap: wrap;
+
+    }
+    .bonus-section__recom--body .each-review__link{
+        margin-bottom: 15px;
+    }
+    .bonus-section__recom--body .each-review .rating-box{
+        align-items: flex-start;
+    }
+    .bonus-section__recom--body .each-review .info-date{
+        justify-content: flex-start;
+    }
+    .about-us-section__advantages--each .text-section,
+    .about-us-section__advantages--each .image-section{
+        width: 50%;
+        overflow: hidden;
+    }
+    .about-us-section__advantages--each .text-section{
+        padding: 25px;
+    }
+    .about-us-section__advantages--each .text-section h5{
+        font-size: 36px;
+        line-height: 46px;
+    }
+    .about-us-section__advantages--each.advantage-right,
+    .about-us-section__advantages--each.advantage-left{
+        align-self: unset;
+    }
+    .main-footer__bottom-form h4{
+        margin-bottom: 15px;
+    }
+    .main-footer__bottom-form{
+        justify-content: center;
+    }
 }
 
 
@@ -2570,6 +2930,21 @@
     .brokers-list:not(.plarform-list) .broker-wrap .broker-name {
         justify-content: flex-end;
     }
+    .tab-content__review--image-link{
+        margin-right: 15px;
+    }
+    .about-us-section__advantages--each .text-section,
+    .about-us-section__advantages--each .image-section{
+        width: 50%;
+        overflow: hidden;
+    }
+    .posts-section__grid--each .descr-box{
+        padding: 25px;
+    }
+    .main-footer__middle-menu.first-menu{
+        width: auto;
+    }
+    
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1600px) {
@@ -2578,8 +2953,14 @@
     }
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
     .about-us-section__advantages--each .text-section{
         padding: 50px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .why-us__banner{
+        background-size: contain;
     }
 }

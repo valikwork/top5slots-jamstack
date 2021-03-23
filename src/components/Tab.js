@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Tab( { label, onClick, activeTab, image } ) {
+export default function Tab( { label, onClick, activeTab, image, total } ) {
 
     let className = 'tab-list-item';
 
@@ -15,6 +15,7 @@ export default function Tab( { label, onClick, activeTab, image } ) {
         >
             <img src={image} />
         {label}
+        {total && ` (${total})`}
         </li>
     )
 }

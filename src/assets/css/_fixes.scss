@@ -1,0 +1,40 @@
+//Fixes
+html, body, #___gatsby, #gatsby-focus-wrapper {
+    height: 100%;
+}
+#gatsby-focus-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+main{
+    flex: 1 0 auto;
+}
+.row{
+    max-width: 1430px;
+    &.full-width{
+        width: 100%;
+        max-width: 100%;
+    }
+}
+input[type='search']{
+    box-sizing: border-box;
+}
+.wrapper{
+    max-width: 1430px;
+    margin: 0 auto;
+}
+.title-area li::before{
+    display: none;
+}
+.top-bar-section ul.dropdrown_menu li::before{
+    display: none;
+}
+
+.custom-medium-9{
+    padding-right: 7.5px;
+    width: 70.7%;
+}
+.custom-medium-3{
+    padding-left: 7.5px;
+    width: 29.3%;
+}

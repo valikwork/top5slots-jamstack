@@ -1,5 +1,4 @@
 export default function MatchHeight(className) {
-    console.log(className);
 
     //Grab divs with the class name 'match-height'
     var getDivs = document.getElementsByClassName(className);

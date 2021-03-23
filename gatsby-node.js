@@ -19,6 +19,9 @@ exports.createPages = async({ actions, graphql }) => {
                         ... on WPGraphQL_Template_ContactUs {
                           templateName
                         }
+                        ... on WPGraphQL_Template_ReviewArchivePage {
+                          templateName
+                        }
                       }
                     }
                 }
@@ -33,6 +36,13 @@ exports.createPages = async({ actions, graphql }) => {
                     }
                 }
 
+                contentTypes(first: 1000) {
+                    nodes {
+                        name
+                        uri
+                        id
+                    }
+                }
 
             }
         }
@@ -53,20 +63,29 @@ exports.createPages = async({ actions, graphql }) => {
                     },
                 })
                 break;
+            case "ReviewArchivePage":
+                actions.createPage({
+                    path: page.uri,
+                    component: require.resolve("./src/templates/ReviewArchivePage.js"),
+                    context: {
+                        id: page.id,
+                    },
+                })
+                break;
             default:
-                // actions.createPage({
-                //     path: page.uri,
-                //     component: require.resolve("./src/templates/Default.js"),
-                //     context: {
-                //         id: page.id,
-                //     },
-                // })
+                actions.createPage({
+                    path: page.uri,
+                    component: require.resolve("./src/templates/Default.js"),
+                    context: {
+                        id: page.id,
+                    },
+                })
                 break;
         }
     })
 
+    //Taxonomies Archive Pages
     const taxonomies = result.data.wpgraphql.taxonomies.nodes;
-    // console.log(taxonomies);
     taxonomies.forEach(tax => {
         switch (tax.name) {
             case "bonuses":
@@ -83,5 +102,24 @@ exports.createPages = async({ actions, graphql }) => {
                 break;
         }
     })
+
+    //Post Type Archive Pages
+    // postTypes = result.data.wpgraphql.contentTypes.nodes;
+    // postTypes.forEach(type => {
+    //     switch (type.name) {
+    //         case "review":
+    //             actions.createPage({
+    //                 path: type.name,
+    //                 component: require.resolve("./src/templates/archives/postTypes/ReviewArchivePage.js"),
+    //                 context: {
+    //                     id: type.id
+    //                 },
+    //             })
+    //             break;
+    //         default:
+                
+    //             break;
+    //     }
+    // })
 
 }

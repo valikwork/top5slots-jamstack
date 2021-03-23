@@ -1,0 +1,101 @@
+//Header
+.main-header{
+    background-color: #373D45;
+    padding: 5px 0;
+    nav.top-bar{
+        margin-top: 0;
+        padding-left: 40px;
+    }
+}
+.top-bar-section li:not(.has-form).menu-item a:not(.button){
+    color: #FFFFFF;
+    font-family: $Roboto;
+    font-weight: bold;
+}
+.header-row{
+    display: flex;
+    align-items: center;
+}
+.menu-new-header-menu-container{
+    text-align: left;
+    .menu-item{
+        position: relative;
+        &:not(:last-of-type):not(.menu-item-child){
+            margin-right: 68px;
+        }
+        &.page_icon{
+            &--home::before{
+                content: '';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: -79%;
+                width: 28px;
+                height: 24px;
+                background-image: url('../assets/images//home.svg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            &--review::before{
+                content: '';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: -63%;
+                width: 28px;
+                height: 24px;
+                background-image: url('../assets/images/review.svg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            &--categories::before{
+                content: '';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: -15%;
+                width: 26px;
+                height: 26px;
+                background-image: url('../assets/images/categories.svg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            &--contact-us::before{
+                content: '';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: -36%;
+                width: 28px;
+                height: 28px;
+                background-image: url('../assets/images/contact.svg');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+
+        &.has-dropdown::after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 5px;
+            width: 6px;
+            height: 6px;
+            background-image: url('../assets/images/menu_dropdown_arrow.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+.dropdrown_menu {
+
+    .menu-item-child{
+        padding: 15px;
+        background-color: $GeneralColor;
+        a{
+            background-color: $GeneralColor !important;
+        }
+    }
+}

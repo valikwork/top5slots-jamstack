@@ -8,7 +8,16 @@ import DateHandler from "../functions/DateHandler";
 import MatchHeight from '../functions/MatchHeight';
 import Parser from "html-react-parser"
 import Equalizer from "react-equalizer";
+import shortid from 'shortid';
+ 
 
+import tabDecorLeft from '../assets/images/tab-section-left.png';
+import tabDecorRight from '../assets/images/tab-section-right.png';
+
+import gamesDecorLeft from '../assets/images/casino-games-decor-left.png';
+import gamesDecorRight from '../assets/images/casino-games-decor-right.png';
+
+import bonusDecorRight from '../assets/images/bonus-decor-right.png';
 
 export const query = graphql`
   query($id: ID!) {
@@ -35,7 +44,7 @@ export const query = graphql`
                     uri
                     tax_review_categories {
                         termImage {
-                        mediaItemUrl
+                            mediaItemUrl
                         }
                         categoryHeader
                         categoryDescription
@@ -48,9 +57,10 @@ export const query = graphql`
                                 affiliateLink
                                 bonusSubtext
                                 bonusText
-                                depositBonus
+                                depositBonusText
                                 rating
                                 termsAndConditionsText
+                                hasExclusiveBonus
                                 languageOptions {
                                     language {
                                         name
@@ -103,64 +113,117 @@ export const query = graphql`
 
                 bonusesSectionHeading
                 bonusesShowRecomended {
-                    ... on WPGraphQL_Review {
-                        title
-                        uri
-                        cpt_reviews {
-                            affiliateLink
-                            bonusSubtext
-                            bonusText
-                            depositBonus
-                            rating
-                            termsAndConditionsText
-                            languageOptions {
-                                language {
-                                    name
-                                    tax_review_languages {
-                                        languageIcon {
-                                        mediaItemUrl
+                    pickABonus
+                    pickACasino {
+                        ... on WPGraphQL_Review {
+                            uri
+                            title
+                            featuredImage {
+                                node {
+                                    mediaDetails {
+                                        filteredSizes(sizes: "review-extra-small") {
+                                            width
+                                            height
+                                            sourceUrl
                                         }
                                     }
                                 }
                             }
-                        }
-                        featuredImage {
-                            node {
-                                mediaDetails {
-                                    filteredSizes(sizes: "review-extra-small") {
-                                        width
-                                        height
-                                        sourceUrl
+                            cpt_reviews {
+                                affiliateLink
+                                bonusSubtext
+                                bonusText
+                                depositBonusText
+                                rating
+                                termsAndConditionsText
+                                languageOptions {
+                                    language {
+                                        name
+                                        tax_review_languages {
+                                            languageIcon {
+                                                mediaItemUrl
+                                            }
+                                        }
                                     }
                                 }
-                            }
-                        }
-                        review_bonuses {
-                            nodes {
-                                name
+                                noDepositBonus {
+                                    hasThisBonus
+                                    name
+                                }
+                                freeSpinsBonus {
+                                    hasThisBonus
+                                    name
+                                }
+                                depositBonus {
+                                    hasThisBonus
+                                    name
+                                }
+                                bestPercentageBonus {
+                                    hasThisBonus
+                                    name
+                                }
+                                otherBonus {
+                                    hasThisBonus
+                                    name
+                                }
                             }
                         }
                     }
                 }
                 bonusesShowLatest {
-                    ... on WPGraphQL_Review {
-                        id
-                        uri
-                        title
-                        date
-                        review_bonuses {
-                            nodes {
-                                name
-                            }
-                        }
-                        featuredImage {
-                            node {
-                                mediaDetails {
-                                    filteredSizes(sizes: "review-extra-small") {
-                                        width
-                                        height
-                                        sourceUrl
+                    pickABonus
+                    pickACasino {
+                        ... on WPGraphQL_Review {
+                            uri
+                            title
+                            date
+                            featuredImage {
+                                node {
+                                    mediaDetails {
+                                        filteredSizes(sizes: "review-extra-small") {
+                                            width
+                                            height
+                                            sourceUrl
+                                        }
                                     }
+                                }
+                            }
+                            cpt_reviews {
+                                affiliateLink
+                                bonusSubtext
+                                bonusText
+                                depositBonusText
+                                rating
+                                termsAndConditionsText
+                                languageOptions {
+                                    language {
+                                        name
+                                        tax_review_languages {
+                                            languageIcon {
+                                                mediaItemUrl
+                                            }
+                                        }
+                                    }
+                                }
+                                noDepositBonus {
+                                    hasThisBonus
+                                    name
+                                }
+                                freeSpinsBonus {
+                                    hasThisBonus
+                                    name
+                                }
+                                depositBonus {
+                                    hasThisBonus
+                                    name
+                                }
+                                bestPercentageBonus {
+                                    hasThisBonus
+                                    name
+                                }
+                                otherBonus {
+                                    hasThisBonus
+                                    name
                                 }
                             }
                         }
@@ -276,9 +339,11 @@ export default function HomePage({ data }) {
                         const reviews = category.reviews.nodes;
 
                         return (
-                            <div label={category.name} image={category.tax_review_categories.termImage.mediaItemUrl}>
+                            <div label={category.name} key={shortid.generate()} image={category.tax_review_categories.termImage.mediaItemUrl}>
                                 <div className="tab-content__wrapper row" >
                                     <div className="column small-12">
+                                        <img className="tab-content__decor decor-left" src={tabDecorLeft} alt=""/>
+                                        <img className="tab-content__decor decor-right" src={tabDecorRight} alt=""/>
                                         <h2 className="tab-content__header">{category.tax_review_categories.categoryHeader}</h2>
                                         <p className="tab-content__descr">{category.tax_review_categories.categoryDescription}</p>
                                         <div className="tab-content__reviews-wrap">
@@ -322,11 +387,13 @@ export default function HomePage({ data }) {
                                                         }
                                                     }
                                                 }
+                                                console.log(review.cpt_reviews.hasExclusiveBonus);
                                                 
                                                 return(
-                                                    <div className={tabContentClass}>
+                                                    <div key={shortid.generate()} className={tabContentClass}>
                                                         {review.featuredImage && (
                                                             <Link to={review.uri} className={`${tabContentClass}--image-link`}>
+                                                                {review.cpt_reviews.hasExclusiveBonus && <span className="exclusive-bonus">Exclusive bonus</span> }
                                                                 <img className={`${tabContentClass}--image`} src={review.featuredImage.node.mediaDetails.filteredSizes[0].sourceUrl} alt="" width={review.featuredImage.node.mediaDetails.filteredSizes[0].width} height={review.featuredImage.node.mediaDetails.filteredSizes[0].height} />
                                                             </Link>
                                                         )}
@@ -338,8 +405,8 @@ export default function HomePage({ data }) {
                                                                 <p className={`${tabContentClass}--info-bonus-subtext`}>{review.cpt_reviews.bonusSubtext}</p>
                                                             )}
                                                             <div className={`${tabContentClass}--info-additional`}>
-                                                                {review.cpt_reviews.depositBonus && <span className="depositBonus">{review.cpt_reviews.depositBonus}</span>}
-                                                                {review.cpt_reviews.depositBonus && review.cpt_reviews.termsAndConditionsText && <span className="dash"> | </span>}
+                                                                {review.cpt_reviews.depositBonusText && <span className="depositBonusText">{review.cpt_reviews.depositBonusText}</span>}
+                                                                {review.cpt_reviews.depositBonusText && review.cpt_reviews.termsAndConditionsText && <span className="dash"> | </span>}
                                                                 {review.cpt_reviews.termsAndConditionsText && <span className="termsAndConditionsText">{review.cpt_reviews.termsAndConditionsText}</span>}
                                                             </div>
                                                         </div>
@@ -353,15 +420,6 @@ export default function HomePage({ data }) {
                                                             </div>
                                                         )}
                                                         {<RatingBox reviewData={review}/>}
-                                                        {/* {review.cpt_reviews.rating && (
-                                                            <div className={`${tabContentClass}--rating ${ratingCSSClass}`}>
-                                                                <div className={`${tabContentClass}--rating-top`}>
-                                                                    <img src={ratingIconUrl} alt=""/>
-                                                                    <span className={`${tabContentClass}--rating-number`}>{review.cpt_reviews.rating} / 10</span>
-                                                                </div>
-                                                                <span className={`${tabContentClass}--rating-reputation`}>{ratingReputation} Reputation</span>
-                                                            </div>
-                                                        )} */}
 
                                                         {review.uri && (
                                                             <div className={`${tabContentClass}--visit`}>
@@ -404,12 +462,14 @@ export default function HomePage({ data }) {
         return (
             <div className={sectionClass}>
                 <div className={`${sectionClass}__inner-wrap row`}>
+                    <img className={`${sectionClass}__decor decor-left`} src={gamesDecorLeft} alt=""/>
+                    <img className={`${sectionClass}__decor decor-right`} src={gamesDecorRight} alt=""/>
                     <h2 className={`column small-12 ${sectionClass}__heading`}>{heading}</h2>
                     <div className={`${sectionClass}__categories-wrap column small-12`}>
                         {gamesSectionData && gamesSectionData.map(gameCateg => {
                             const games = gameCateg.games ? gameCateg.games.nodes : null;
                             return(
-                                <div className={`${sectionClass}__category row`}>
+                                <div key={shortid.generate()} className={`${sectionClass}__category row`}>
                                     <div className={`column small-12 ${sectionClass}__category-top`}>
                                         <img src={gameCateg.tax_games_categories.termIcon.mediaItemUrl} alt=""/>
                                         <span>{gameCateg.name}</span>
@@ -417,8 +477,8 @@ export default function HomePage({ data }) {
                                     <div className={`column small-12 ${sectionClass}__category-bottom`}>
                                         {games && games.map(eachGame => {
                                             return (
-                                                <Link to={eachGame.uri} className={`${sectionClass}__category-bottom-each`}>
-                                                    <img src={eachGame.featuredImage.node.mediaItemUrl} alt=""/>
+                                                <Link key={shortid.generate()} to={eachGame.uri} className={`${sectionClass}__category-bottom-each`}>
+                                                    {eachGame.featuredImage && <img src={eachGame.featuredImage.node.mediaItemUrl} alt=""/>}
                                                 </Link>
                                             );
                                         })}
@@ -437,7 +497,7 @@ export default function HomePage({ data }) {
 
 
     const BonusSection = () => {
-
+        
         const bonusSectionCssClass = 'bonus-section';
         const bonusSectionHeading = page.tmpl_home_page.bonusesSectionHeading;
         const bonusesSectionRecommData = page.tmpl_home_page.bonusesShowRecomended;
@@ -445,8 +505,9 @@ export default function HomePage({ data }) {
         const columnClass = bonusesSectionRecommData.length > 0 && bonusesSectionLatestData.length > 0 ? 'medium-6' : 'medium-12';
 
         return (
-            <div className={`${bonusSectionCssClass}__wrap `}>
-                <div className="row">
+            <div className={bonusSectionCssClass}>
+                <div className={`${bonusSectionCssClass}__wrap row`}>
+                    <img src={bonusDecorRight} className={`${bonusSectionCssClass}__decor decor-right`} alt=""/>
                     <div className="column small-12 large-12">
                         <h2 className={`${bonusSectionCssClass}__heading `}>{bonusSectionHeading}</h2>
                     </div>
@@ -461,27 +522,27 @@ export default function HomePage({ data }) {
                             </div>
 
                             <div className={`${bonusSectionCssClass}__recom--body`}>
-                                {bonusesSectionRecommData.map(eachReview => {
+                                {bonusesSectionRecommData.map(eachReviewInfo => {
+                                    const pickedBonus = eachReviewInfo.pickABonus;
+                                    const pickedCasino = eachReviewInfo.pickACasino;
+                                    const bonusInfoInCasino = pickedCasino.cpt_reviews[pickedBonus];
+                                    
                                     return(
-                                        <div className={`each-review`}>
-                                            {eachReview.featuredImage && (
-                                                <Link className="each-review__link" to={eachReview.uri}>
-                                                    <img src={eachReview.featuredImage.node.mediaDetails.filteredSizes[0].sourceUrl} alt=""/>
+                                        <div key={shortid.generate()} className="each-review">
+                                            {pickedCasino.featuredImage && (
+                                                <Link className="each-review__link" to={pickedCasino.uri}>
+                                                    <img onLoad={() => MatchHeight('each-review')} src={pickedCasino.featuredImage.node.mediaDetails.filteredSizes[0].sourceUrl} alt=""/>
                                                 </Link>
                                             )}
 
                                             <div className="info-box">
                                                 <div className="bonuses">
-                                                    {eachReview.review_bonuses.nodes.map(bonus => {
-                                                        return (
-                                                            <span>{bonus.name}</span>
-                                                        )
-                                                    })}
+                                                    {bonusInfoInCasino.hasThisBonus && <span>{bonusInfoInCasino.name}</span>}
                                                 </div>
-                                                <Link to={eachReview.uri} className="casino-name">{eachReview.title}</Link>
+                                                <Link to={pickedCasino.uri} className="casino-name">{pickedCasino.title}</Link>
                                             </div>
 
-                                            {<RatingBox reviewData={eachReview}/>}
+                                            {<RatingBox reviewData={pickedCasino}/>}
                                         </div>
                                     )
                                 })}
@@ -500,28 +561,28 @@ export default function HomePage({ data }) {
                             </div>
 
                             <div className={`${bonusSectionCssClass}__recom--body`}>
-                                {bonusesSectionLatestData.map(eachReview => {
-                                    
+                                {bonusesSectionLatestData.map(eachReviewInfo => {
+
+                                    const pickedBonus = eachReviewInfo.pickABonus;
+                                    const pickedCasino = eachReviewInfo.pickACasino;
+                                    const bonusInfoInCasino = pickedCasino.cpt_reviews[pickedBonus];
+
                                     return(
-                                        <div className={`each-review`}>
-                                            {eachReview.featuredImage && (
-                                                <Link className="each-review__link" to={eachReview.uri}>
-                                                    <img src={eachReview.featuredImage.node.mediaDetails.filteredSizes[0].sourceUrl} alt=""/>
+                                        <div key={shortid.generate()} className={`each-review`}>
+                                            {pickedCasino.featuredImage && (
+                                                <Link className="each-review__link" to={pickedCasino.uri}>
+                                                    <img src={pickedCasino.featuredImage.node.mediaDetails.filteredSizes[0].sourceUrl} alt=""/>
                                                 </Link>
                                             )}
 
                                             <div className="info-box">
                                                 <div className="bonuses">
-                                                    {eachReview.review_bonuses.nodes.map(bonus => {
-                                                        return (
-                                                            <span>{bonus.name}</span>
-                                                        )
-                                                    })}
+                                                    {bonusInfoInCasino.hasThisBonus && <span>{bonusInfoInCasino.name}</span>}
                                                 </div>
-                                                <Link to={eachReview.uri} className="casino-name">{eachReview.title}</Link>
+                                                <Link to={pickedCasino.uri} className="casino-name">{pickedCasino.title}</Link>
                                             </div>
                                             <div className="info-date">
-                                                {DateHandler(eachReview.date, true)}
+                                                {DateHandler(pickedCasino.date, true)}
                                             </div>
 
                                         </div>
@@ -549,7 +610,6 @@ export default function HomePage({ data }) {
         const advantages = page.tmpl_home_page.ourAdvantages;
         const btnLink = page.tmpl_home_page.aboutUsButtonExternalLink ? page.tmpl_home_page.aboutUsButtonExternalLink : page.tmpl_home_page.aboutUsButtonInternalLink.uri
         const btnText = page.tmpl_home_page.aboutUsButtonText;
-        console.log(advantages);
 
         return(
             <div className={aboutUsCssClass}>
@@ -562,7 +622,7 @@ export default function HomePage({ data }) {
                         const rlClass = i % 2 === 0 ? 'advantage-right' : 'advantage-left';
                         
                         return(
-                            <div className={`${aboutUsCssClass}__advantages--each ${rlClass}`}>
+                            <div key={shortid.generate()} className={`${aboutUsCssClass}__advantages--each ${rlClass}`}>
                                 <div className="text-section">
                                     <h5>{advantage.advantageHeading}</h5>
                                     <p>{advantage.advantageText}</p>
@@ -600,8 +660,8 @@ export default function HomePage({ data }) {
                     <Equalizer>
                     {posts.map(post => {
                         return(
-                            <Link to={post.uri} className={`column large-3 medium-6 small-12 ${postsSectionCssClass}__grid--each`}>
-                                <img src={post.featuredImage.node.mediaItemUrl} alt=""/>
+                            <Link key={shortid.generate()} to={post.uri} className={`column large-3 medium-6 small-12 ${postsSectionCssClass}__grid--each`}>
+                                {post.featuredImage && <img src={post.featuredImage.node.mediaItemUrl} alt=""/>}
                                 <div className="descr-box">
                                     <h6>{post.title}</h6>
                                     {Parser(post.excerpt)}

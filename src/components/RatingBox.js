@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-export default function RatingBox({ reviewData }) {
+export default function RatingBox({ reviewData, inline }) {
+    //Prop: 
+    //whole review object
+    //inline - change layout to ratingIconUrl->ratingReputation->reviewData.cpt_reviews.rating
     const data = useStaticQuery(graphql`
         query {
             wpgraphql {
@@ -44,6 +47,18 @@ export default function RatingBox({ reviewData }) {
                 break;
             }
         }
+    }
+
+    if(inline){
+        return (
+            <div className={`${ratingCSSClass} rating-box rating-box-inline`}>
+                <div className="rating-box__left">
+                    <img src={ratingIconUrl} alt=""/>
+                    <span className="rating-box__rating">{ratingReputation} Reputation</span>
+                </div>
+                <span className="rating-box__right">{reviewData.cpt_reviews.rating} / 10</span>
+            </div>
+        )
     }
 
     return (

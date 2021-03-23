@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useStaticQuery, graphql } from "gatsby"
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
-
+import shortid from 'shortid';
 
 
 
@@ -255,7 +255,7 @@ export default function Footer(props) {
                         <div className={`${footerCSSClass}__soc-link`}>
                             {info.socialLinks.map(socLink => {
                                 return (
-                                    <a href={socLink.link}><img src={socLink.logo.mediaItemUrl} alt=""/></a>
+                                    <a key={shortid.generate()} href={socLink.link}><img src={socLink.logo.mediaItemUrl} alt=""/></a>
                                 )
                             })}
                         </div>
@@ -270,7 +270,7 @@ export default function Footer(props) {
                             <ul>
                                 {info.firstMenuItems.map(menuItem => {
                                     return (
-                                        <li><Link to={menuItem.link.uri}><img src={menuItem.icon.mediaItemUrl} alt=""/><span>{ menuItem.linkText ? menuItem.linkText : menuItem.link.title }</span></Link></li>
+                                        <li key={shortid.generate()}><Link to={menuItem.link.uri}><img src={menuItem.icon.mediaItemUrl} alt=""/><span>{ menuItem.linkText ? menuItem.linkText : menuItem.link.title }</span></Link></li>
                                     );
                                 })}
                             </ul>
@@ -283,7 +283,7 @@ export default function Footer(props) {
                             <ul>
                                 {info.secondMenuItems.map(menuItem => {
                                     return (
-                                        <li><Link to={menuItem.link.uri}><img src={menuItem.icon.mediaItemUrl} alt=""/><span>{ menuItem.linkText ? menuItem.linkText : menuItem.link.title }</span></Link></li>
+                                        <li key={shortid.generate()}><Link to={menuItem.link.uri}><img src={menuItem.icon.mediaItemUrl} alt=""/><span>{ menuItem.linkText ? menuItem.linkText : menuItem.link.title }</span></Link></li>
                                     );
                                 })}
                             </ul>
@@ -296,7 +296,7 @@ export default function Footer(props) {
                             <ul>
                                 {info.thirdMenuItems.map(menuItem => {
                                     return (
-                                        <li><Link to={menuItem.link.uri}><img src={menuItem.icon.mediaItemUrl} alt=""/> <span>{ menuItem.linkText ? menuItem.linkText : menuItem.link.title }</span></Link></li>
+                                        <li key={shortid.generate()}><Link to={menuItem.link.uri}><img src={menuItem.icon.mediaItemUrl} alt=""/> <span>{ menuItem.linkText ? menuItem.linkText : menuItem.link.title }</span></Link></li>
                                     );
                                 })}
                             </ul>
@@ -309,7 +309,7 @@ export default function Footer(props) {
                             <ul>
                                 {info.forthMenuItems.map(menuItem => {
                                     return (
-                                        <li><Link to={menuItem.link.uri}><img src={menuItem.icon.mediaItemUrl} alt=""/> <span>{ menuItem.linkText ? menuItem.linkText : menuItem.link.title }</span></Link></li>
+                                        <li key={shortid.generate()}><Link to={menuItem.link.uri}><img src={menuItem.icon.mediaItemUrl} alt=""/> <span>{ menuItem.linkText ? menuItem.linkText : menuItem.link.title }</span></Link></li>
                                     );
                                 })}
                             </ul>
@@ -347,9 +347,9 @@ export default function Footer(props) {
                     <div className={`${footerCSSClass}__bottom-support`}>
                         { info.supportIcons && info.supportIcons.map(icon => {
                             if(icon.link){
-                                return <a href={icon.link}><img src={icon.icon.mediaItemUrl} alt=""/></a>;
+                                return <a key={shortid.generate()} href={icon.link}><img src={icon.icon.mediaItemUrl} alt=""/></a>;
                             } else {
-                                return <img src={icon.icon.mediaItemUrl} alt=""/>;
+                                return <img key={shortid.generate()} src={icon.icon.mediaItemUrl} alt=""/>;
                             }
                         }) }
                     </div>
