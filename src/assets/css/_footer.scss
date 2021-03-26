@@ -43,6 +43,7 @@
                 align-items: flex-start;
                 margin: 0;
                 li{
+                    display: flex;
                     list-style: none;
                     &::before{
                         display: none;
@@ -52,12 +53,16 @@
                     }
                     a{
                         display: flex;
-                        font-family: $Roboto;
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 18px;
-                        line-height: 21px;
-                        color: #FFFFFF;
+                        span{
+                            display: flex;
+                            font-family: $Roboto;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 18px;
+                            line-height: 21px;
+                            color: #FFFFFF;
+                            
+                        }
                         img{
                             margin-right: 8px;
                             max-width: 15px;

@@ -9,8 +9,8 @@ import Parser from "html-react-parser"
 import RatingBox from "../components/RatingBox";
 import DateHandler from "../functions/DateHandler";
 import MatchHeight from '../functions/MatchHeight';
-import TabsWithFilter from '../components/TabsWithFilter'
 import FAQPanel from '../components/FAQPanel';
+import TabsFilterSection from '../components/TabsFilterSection';
 
 //Images
 import tabDecorLeft from '../assets/images/tab-section-left.png';
@@ -20,6 +20,8 @@ import beforePlayingDecorRight from '../assets/images/before-play-decor-right.pn
 import tutorialDecorRight from '../assets/images/tutorial-section-decor.png'
 import bonusDecorRight from '../assets/images/bonus-decor-right.png';
 import allCasinos from '../assets/images/all-casinos.png'
+
+
 
 
 
@@ -76,12 +78,22 @@ export const query = graphql`
                                         optionDescription
                                         language {
                                             name
+                                            tax_review_languages {
+                                                languageIcon {
+                                                    mediaItemUrl
+                                                }
+                                            }
                                         }
                                     }
                                     paymentMethods {
                                         ... on WPGraphQL_Payment_method {
                                             uri
                                             title
+                                            featuredImage {
+                                                node {
+                                                    mediaItemUrl
+                                                }
+                                            }
                                         }
                                     }
                                     pros {
@@ -351,6 +363,11 @@ export const query = graphql`
                             ... on WPGraphQL_Payment_method {
                                 uri
                                 title
+                                featuredImage {
+                                    node {
+                                        mediaItemUrl
+                                    }
+                                }
                             }
                         }
                         pros {
@@ -412,11 +429,11 @@ export default function ReviewArchivePage({ data }) {
     const { page, siteSettings } = data.wpgraphql;
     const pageTemplateData = page.tmpl_review_archive_page;
     const { opt_site_settings } = siteSettings;
-    // console.log(pageTemplateData);
 
-    useEffect(() => {
+    useEffect( () => {
         // MatchHeight('why-us__list--each')
-    })
+        
+    }, [])
 
     const HeadingSection = () => {
 
@@ -438,6 +455,7 @@ export default function ReviewArchivePage({ data }) {
     
 
     const CasinosTabSection = () => {
+        
         const { reviews } = data.wpgraphql;
         const AllCasinos = {
             name: 'All Casinos',
@@ -452,113 +470,7 @@ export default function ReviewArchivePage({ data }) {
         }
         const categoriesIncludingAllCasinos = [AllCasinos, ...page.tmpl_review_archive_page.categoriesForTabs];
 
-        return (
-            <div className="tabs-section filter-section">
-                <TabsWithFilter>
-
-                    {categoriesIncludingAllCasinos.map(category => {
-                        
-                        const reviews = category.reviews.nodes;
-
-                        return (
-                            <div total={reviews.length} label={category.name} key={shortid.generate()} image={category.tax_review_categories.termImage.mediaItemUrl}>
-                                <div className="tab-content__wrapper row" >
-                                    <div className="column small-12">
-                                        <div className="tab-content__reviews-wrap">
-                                            {reviews && reviews.map( review => {
-
-                                                const tabContentClass = "tab-content__review";
-                                                const ideaBulletPoint = `<div class="idea-bullet"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.75 1.4165C6.82174 1.4165 5.9315 1.78525 5.27513 2.44163C4.61875 3.09801 4.25 3.98825 4.25 4.9165C4.25 6.8465 6.2225 7.385 6.3615 9.6665H9.138C9.277 7.385 11.25 6.8465 11.25 4.9165C11.25 3.98825 10.8813 3.09801 10.2249 2.44163C9.5685 1.78525 8.67826 1.4165 7.75 1.4165ZM7.75 14.083C8.697 14.083 8.9915 13.5695 9.0835 13.25H6.4165C6.5085 13.57 6.803 14.083 7.75 14.083ZM6.375 12.749H9.125V10.167H6.375V12.749Z" fill="white"/>
-                                                </svg></div>`;
-
-                                                console.log(review);
-                                                return(
-                                                    <div key={shortid.generate()} className={`${tabContentClass}`}>
-                                                        <div className={`${tabContentClass}--img`} style={{ backgroundColor: review.cpt_reviews.colorForBackground }}>
-                                                            <img src={review.featuredImage && review.featuredImage.node.mediaDetails.filteredSizes[0].sourceUrl} alt=""/>
-                                                        </div>
-                                                        <div className={`${tabContentClass}--text-block`}>
-                                                            <div className={`${tabContentClass}--text-block-left`}>
-                                                                <h6>{review.title}</h6>
-                                                                <RatingBox reviewData={review} inline={true} />
-                                                                <ul className="fact-pros-con">
-                                                                    { review.cpt_reviews.interestingFacts && (
-                                                                        <li>{Parser(ideaBulletPoint)}{review.cpt_reviews.interestingFacts[0].text}</li>
-                                                                    )}
-                                                                    { review.cpt_reviews.pros && review.cpt_reviews.pros.map((pro, i) => {
-                                                                        //2 Max
-                                                                        if(i > 1) return null
-                                                                        return <li><div className="pro-bullet">+</div>{pro.text}</li>
-                                                                    }) }
-                                                                    { review.cpt_reviews.cons && review.cpt_reviews.cons.map((con, i) => {
-                                                                        //1 Max
-                                                                        if(i > 0) return null
-                                                                        return <li><div className="con-bullet">-</div>{con.text}</li>
-                                                                    }) }
-                                                                </ul>
-
-                                                                <div className="additional-info">
-                                                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M14.7561 0.655961H13.7308C13.6664 0.655961 13.6581 0.655961 13.5106 0.511629C13.3149 0.320289 12.9875 0 12.3895 0C11.7916 0 11.4642 0.320289 11.2685 0.511629C11.121 0.655961 11.1127 0.655961 11.0483 0.655961C10.984 0.655961 10.9757 0.655961 10.8282 0.511672C10.6326 0.320289 10.3052 0 9.70727 0C9.10936 0 8.78194 0.320289 8.5863 0.511672C8.43879 0.655961 8.43054 0.655961 8.36617 0.655961H7.36255L8.33824 2.78532H13.7301L14.7561 0.655961Z" fill="#C2A57B"/>
-                                                                        <path d="M14.1099 16.8495L16.4261 12.9856C16.6836 12.556 17.0862 12.2368 17.5491 12.0759L17.6781 9.65397C16.7478 8.34643 15.4303 7.45316 13.8446 6.65497H8.18434C6.58629 7.45182 5.25817 8.34643 4.32227 9.66394L4.45079 12.0759C4.91369 12.2368 5.31626 12.556 5.57377 12.9856L7.88996 16.8495C8.43867 17.7073 8.6802 18.6978 8.60101 19.6885C9.36766 19.9461 10.1768 20.0805 10.9903 20.0805C11.8111 20.0805 12.6263 19.9439 13.3983 19.6821C13.3207 18.6935 13.5624 17.7055 14.1099 16.8495ZM11.5166 14.5524V15.2604H10.6172V14.5842C9.97936 14.546 9.36061 14.3737 8.97793 14.1378L9.46266 13.0406C9.88367 13.2894 10.445 13.4488 10.9361 13.4488C11.3635 13.4488 11.5165 13.3596 11.5165 13.2065C11.5165 12.6452 9.04806 13.098 9.04806 11.4332C9.04806 10.7125 9.57107 10.1065 10.6171 9.95978V9.26455H11.5165V9.94702C11.9885 9.99166 12.4478 10.1129 12.8113 10.317L12.3585 11.4077C11.9184 11.1844 11.5038 11.076 11.1147 11.076C10.6746 11.076 10.5342 11.2036 10.5342 11.3567C10.5342 11.8925 13.0027 11.4459 13.0027 13.0916C13.0028 13.7806 12.5052 14.3801 11.5166 14.5524Z" fill="#C2A57B"/>
-                                                                        <path d="M8.82812 4.07477H13.212V5.36598H8.82812V4.07477Z" fill="#C2A57B"/>
-                                                                        <path d="M6.8359 17.5135L6.82412 17.4945L4.50506 13.6257C4.25502 13.2086 3.71078 13.0789 3.29944 13.3384C2.90168 13.5893 2.77668 14.1116 3.01774 14.5154L5.21142 18.1903L4.10197 18.8466L1.92268 15.163C1.61992 14.6857 1.52543 14.1185 1.65679 13.5644C1.79085 12.9988 2.15823 12.5027 2.66471 12.2032C2.83607 12.102 3.01529 12.0269 3.19765 11.9758L2.96433 7.59691C2.92265 6.81453 2.27614 6.20154 1.49265 6.20154C0.680281 6.20154 0.0210977 6.85892 0.0189063 7.67133L0 14.6718L2.9315 19.7166L2.07247 21.9998H6.38365L7.15945 20.5016C7.52628 19.492 7.40906 18.4049 6.8359 17.5135Z" fill="#C2A57B"/>
-                                                                        <path d="M21.9999 14.6719L21.9809 7.67151C21.9787 6.85914 21.3195 6.20172 20.5072 6.20172C19.7237 6.20172 19.0772 6.81471 19.0355 7.59709L18.8022 11.976C18.9845 12.027 19.1638 12.1021 19.3351 12.2034C19.8416 12.5028 20.209 12.9989 20.343 13.5645C20.4744 14.1187 20.3799 14.6859 20.0771 15.1632L17.8979 18.8468L16.7884 18.1905L18.9821 14.5156C19.2232 14.1118 19.0981 13.5895 18.7004 13.3385C18.2891 13.079 17.7448 13.2088 17.4948 13.6259L15.1757 17.4947L15.164 17.5137C14.5908 18.4051 14.4736 19.4921 14.8404 20.5018L15.6162 21.9999H19.9274L19.0684 19.7168L21.9999 14.6719Z" fill="#C2A57B"/>
-                                                                    </svg>
-                                                                    <div className="additional-info__box">
-                                                                        {review.cpt_reviews.bonusText && <span className="bonusText">Bonus: {review.cpt_reviews.bonusText}</span>}
-                                                                        {review.cpt_reviews.bonusSubtext && <span className="bonusSubtext">{review.cpt_reviews.bonusSubtext}</span> }
-                                                                        {review.cpt_reviews.termsAndConditionsText && <span className="termsAndConditionsText">{review.cpt_reviews.termsAndConditionsText}</span> }
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="buttons">
-                                                                    <a href={review.cpt_reviews.affiliateLink} className="btn" >Visit Casino</a>
-                                                                    <Link to={review.uri} className="btn btn-reverse" >Read Review</Link>
-                                                                </div>
-
-                                                            </div>
-                                                            <div className={`${tabContentClass}--text-block-right`}>
-                                                               {review.cpt_reviews.languageOptions && (
-                                                                   <div className="language-opt">
-                                                                       <span>Language options</span>
-                                                                       <ul>
-                                                                           {review.cpt_reviews.languageOptions.map(lang => {
-                                                                               console.log(lang);
-                                                                               const text = lang.optionDescription;
-                                                                               const langImageUrl = lang.language.tax_review_languages ? lang.language.tax_review_languages.languageIcon.mediaItemUrl : null;
-                                                                               return (
-                                                                                <li>
-                                                                                    {langImageUrl && <img src={langImageUrl}/>} 
-                                                                                    {text}
-                                                                                </li>
-                                                                               )
-                                                                           })}
-                                                                       </ul>
-                                                                   </div>
-                                                               )} 
-                                                                
-                                                            </div>
-                                                            
-                                                        </div>
-                                                        
-                                                    </div>
-                                                )
-                                            })}
-
-                                            <button label={category.name} className="btn btn-arrow btn-center btn-big" to={category.uri}>Show more casinos</button>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </div>
-                        )
-                    })}
-
-                </TabsWithFilter>
-            </div>
-
-        )
+        return <TabsFilterSection categoriesIncludingAllCasinos={categoriesIncludingAllCasinos} />
     }
 
     const WhyUsSection = () => {

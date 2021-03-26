@@ -387,7 +387,6 @@ export default function HomePage({ data }) {
                                                         }
                                                     }
                                                 }
-                                                console.log(review.cpt_reviews.hasExclusiveBonus);
                                                 
                                                 return(
                                                     <div key={shortid.generate()} className={tabContentClass}>

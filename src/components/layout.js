@@ -11,9 +11,9 @@ import "../assets/css/plugins/jquery.fancybox.min.css"
 
 const Layout = props => {
 
-  const { children, pageInfo } = props
+  const { children, pageInfo, className } = props
   const { isFrontPage, contentType, title, uri } = pageInfo ? pageInfo : ""
-  const mainClass = isFrontPage ? "homePage" : ""
+  const mainClass = isFrontPage ? "homePage" : className
 
   useEffect(() => {
 

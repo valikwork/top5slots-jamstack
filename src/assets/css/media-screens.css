@@ -1722,9 +1722,20 @@
     .menu-new-header-menu-container .menu-item .dropdrown_menu .menu-item{
         padding: 4px 20px;
     }
-    .menu-new-header-menu-container .menu-item.expanded .dropdrown_menu .menu-item{
-
+    .contact-page-content-box{
+        padding: 48px 30px;
+        flex-direction: column;
     }
+    .contact-page-form-box, .contact-page-info-box{
+        width: 100%;
+    }
+    .contact-page-info-box{
+        padding-left: 0;
+    }
+    .contact-page-info-box--map{
+        height: 200px;
+    }
+
 }
 
 
@@ -2846,6 +2857,9 @@
     }
     .main-footer__bottom-form{
         justify-content: center;
+    }
+    .contact-page-content-box{
+        padding: 48px 30px;
     }
 }
 

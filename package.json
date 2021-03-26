@@ -23,6 +23,7 @@
     "gatsby-plugin-postcss": "^3.7.0",
     "gatsby-plugin-sass": "^3.2.0",
     "gatsby-source-graphql": "^2.14.0",
+    "google-map-react": "^2.1.9",
     "graphql-tag": "^2.11.0",
     "html-react-parser": "^1.2.4",
     "postcss": "^8.2.8",
