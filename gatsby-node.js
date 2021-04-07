@@ -26,6 +26,14 @@ exports.createPages = async({ actions, graphql }) => {
                     }
                 }
 
+                reviews(first: 10000) {
+                    nodes {
+                        id
+                        uri
+                        title
+                    }
+                }
+
                 taxonomies {
                     nodes {
                         name
@@ -91,6 +99,18 @@ exports.createPages = async({ actions, graphql }) => {
                 })
                 break;
         }
+    })
+
+    //Casino Review Single
+    const reviews = result.data.wpgraphql.reviews.nodes
+    reviews.forEach(review => {
+        actions.createPage({
+            path: review.uri,
+            component: require.resolve("./src/templates/singles/ReviewSingle.js"),
+            context: {
+                id: review.id,
+            },
+        })
     })
 
     //Taxonomies Archive Pages

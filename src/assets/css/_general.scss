@@ -140,8 +140,83 @@ ul > li::before {
 .top-bar .toggle-topbar.menu-icon a span{
     font-family: $FiraSans;
     font-weight: 400;
+    color: #fff;
 }
 
 .custom-small-10{
     width: 86.33333%;
+}
+
+.uk-flag{
+    border-radius: 50%;
+    border: 3px solid #C2A57B;
+    margin-right: 6px;
+    box-sizing: content-box;
+}
+
+.expandable-box{
+    overflow: hidden;
+
+    .excerpt{
+        margin-bottom: 25px;
+        font-family: $FiraSans;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 30px;
+        color: #022141;
+        p{
+            margin: 0;
+            font-family: $FiraSans;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 30px;
+            color: #022141;
+        }
+    }
+
+    .restText{
+        max-height: 0;
+        transition: .3s all;
+        margin: 0;
+        font-family: $FiraSans;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 30px;
+        color: #022141;
+
+        p{
+            font-family: $FiraSans;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 30px;
+            color: #022141;
+        }
+
+        p:last-of-type{
+            margin: 0;
+        }
+    }
+
+    &.open{
+
+        .restText{
+            height:auto;
+            max-height:1000px;
+            transition: .3s all;
+            margin-top: 15px;
+        }
+
+        .show-more{
+            transition: .3s all;
+
+            &::after{
+                transform: rotateZ(180deg) translateY(50%);
+                transition: .3s all;
+            }
+        }
+    }
 }

@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react'
+import shortid from 'shortid';
 
-export default function FilterItem({ data, name, svg }) {
+export default function FilterItem({ data, name, svg, filterHandle, filtrationCategory }) {
 
     const [isOpen, setOpen] = useState(false)
     const [rotation, setRotation] = useState(0)
+    const [arrayOfCheckedOptions, setArrayOfCheckedOptions] = useState([])
+    
 
+    useEffect(() => {
+        
+        
+        filterHandle({ [filtrationCategory] : arrayOfCheckedOptions})
+        
+    }, [arrayOfCheckedOptions])
+    
     useEffect(() => {
         if(isOpen){
             setRotation(180)
@@ -12,6 +22,17 @@ export default function FilterItem({ data, name, svg }) {
             setRotation(0)
         }
     }, [isOpen])
+
+    const prepareResult = (slug) => {
+        if(!arrayOfCheckedOptions.includes(slug)){
+            setArrayOfCheckedOptions(rest => [...rest, slug])
+            console.log('added');
+        }
+        if(arrayOfCheckedOptions.includes(slug)){
+            setArrayOfCheckedOptions(rest => rest.filter(item => item !== slug))
+            console.log('deleted');
+        }
+    }
 
     
 
@@ -27,8 +48,8 @@ export default function FilterItem({ data, name, svg }) {
                 <div className="filter-item__body">
                     {data.map(item => {
                         return (
-                            <label onClick={() => console.log(item.name)} className="custom-checkbox">
-                                <input type="checkbox" />
+                            <label className="custom-checkbox" key={item.slug}>
+                                <input type="checkbox" onClick={() => prepareResult(item.slug)}  />
                                 <div className="checkmark">
                                     <svg className="box" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M16 2V16H2V2H16ZM16 0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H16C17.1 18 18 17.1 18 16V2C18 0.9 17.1 0 16 0Z" fill="#C2A57B"/>

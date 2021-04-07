@@ -29,7 +29,7 @@ export default function PaymentMethodsAccordion({ paymentMethods }) {
         <>
         <div className="payment-methods__heading">
             <span>Payment Methods ({paymentMethods.length})</span>
-            <button onClick={() => setOpen(!isOpen)}> {isOpen ? 'Hide' : 'Show All'} </button>
+            {paymentMethods.length > 3 && <button onClick={() => setOpen(!isOpen)}> {isOpen ? 'Hide' : 'Show All'} </button>}
         </div>
         <ul>
         {paymentMethods.length && paymentMethods.map((payment, i) => {

@@ -70,7 +70,31 @@ export const query = graphql`
                                     cons {
                                         text
                                     }
+                                    currency {
+                                        name
+                                        uri
+                                        slug
+                                    }
+                                    customerSupportLanguage {
+                                        name
+                                        uri
+                                        slug
+                                    }
                                     depositBonusText
+                                    forPlayersFrom {
+                                        name
+                                        uri
+                                        slug
+                                    }
+                                    gameProvider {
+                                        ... on WPGraphQL_Game_provider {
+                                            id
+                                            uri
+                                            title
+                                            slug
+                                        }
+                                    }
+                                    hasExclusiveBonus
                                     interestingFacts {
                                         text
                                     }
@@ -85,10 +109,22 @@ export const query = graphql`
                                             }
                                         }
                                     }
+                                    licensingAuthority {
+                                        uri
+                                        slug
+                                        name
+                                    }
+                                    liveChatLanguage {
+                                        uri
+                                        slug
+                                        name
+                                    }
                                     paymentMethods {
                                         ... on WPGraphQL_Payment_method {
+                                            id
                                             uri
                                             title
+                                            slug
                                             featuredImage {
                                                 node {
                                                     mediaItemUrl
@@ -96,14 +132,22 @@ export const query = graphql`
                                             }
                                         }
                                     }
+                                    popularFilters {
+                                        uri
+                                        slug
+                                        name
+                                    }
                                     pros {
                                         text
                                     }
                                     rating
                                     termsAndConditionsText
                                     websiteLanguage {
+                                        slug
                                         name
+                                        uri
                                     }
+                                    withdrawalLimit
                                 }
                                 featuredImage {
                                     node {
@@ -344,7 +388,31 @@ export const query = graphql`
                         cons {
                             text
                         }
+                        currency {
+                            name
+                            uri
+                            slug
+                        }
+                        customerSupportLanguage {
+                            name
+                            uri
+                            slug
+                        }
                         depositBonusText
+                        forPlayersFrom {
+                            name
+                            uri
+                            slug
+                        }
+                        gameProvider {
+                            ... on WPGraphQL_Game_provider {
+                                id
+                                uri
+                                title
+                                slug
+                            }
+                        }
+                        hasExclusiveBonus
                         interestingFacts {
                             text
                         }
@@ -359,10 +427,22 @@ export const query = graphql`
                                 }
                             }
                         }
+                        licensingAuthority {
+                            uri
+                            slug
+                            name
+                        }
+                        liveChatLanguage {
+                            uri
+                            slug
+                            name
+                        }
                         paymentMethods {
                             ... on WPGraphQL_Payment_method {
+                                id
                                 uri
                                 title
+                                slug
                                 featuredImage {
                                     node {
                                         mediaItemUrl
@@ -370,14 +450,22 @@ export const query = graphql`
                                 }
                             }
                         }
+                        popularFilters {
+                            uri
+                            slug
+                            name
+                        }
                         pros {
                             text
                         }
                         rating
                         termsAndConditionsText
                         websiteLanguage {
+                            slug
                             name
+                            uri
                         }
+                        withdrawalLimit
                     }
                     featuredImage {
                         node {

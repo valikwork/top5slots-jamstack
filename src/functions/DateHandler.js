@@ -1,4 +1,6 @@
 export default function DateHandler(date, month) {
+    //date = string of date data
+    //month = true / false
     const dateSorted = date.split('T')[0];
     let dateArray = dateSorted.split('-');
 

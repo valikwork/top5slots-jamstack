@@ -15,6 +15,18 @@ $MainColor: #C2A57B;
 }
 @font-face {
     font-family: 'Fira Sans';
+    src: url('./fonts/FiraSans-Medium.eot');
+    src: url('./fonts/FiraSans-Medium.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/FiraSans-Medium.woff2') format('woff2'),
+        url('./fonts/FiraSans-Medium.woff') format('woff'),
+        url('./fonts/FiraSans-Medium.ttf') format('truetype'),
+        url('./fonts/FiraSans-Medium.svg#FiraSans-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Fira Sans';
     src: url('./fonts/FiraSans-Bold.eot');
     src: url('./fonts/FiraSans-Bold.eot?#iefix') format('embedded-opentype'),
         url('./fonts/FiraSans-Bold.woff2') format('woff2'),
@@ -1204,37 +1216,7 @@ $Objective: 'Objective', sans-serif;
                     margin: 0;
                 }
 
-                .expandable-box{
-                    overflow: hidden;
-
-                    .excerpt{
-                        margin-bottom: 25px;
-                    }
-
-                    .restText{
-                        max-height: 0;
-                        transition: .3s all;
-                    }
-
-                    &.open{
-
-                        .restText{
-                            height:auto;
-                            max-height:1000px;
-                            transition: .3s all;
-                            margin-top: 15px;
-                        }
-
-                        .show-more{
-                            transition: .3s all;
-
-                            &::after{
-                                transform: rotateZ(180deg) translateY(50%);
-                                transition: .3s all;
-                            }
-                        }
-                    }
-                }
+                
             }
         }
 
@@ -1923,7 +1905,8 @@ $Objective: 'Objective', sans-serif;
 
     &__body{
         padding-top: 25px;
-        
+        max-height: 500px;
+        overflow-y: auto;
     }
 }
 
@@ -2140,6 +2123,570 @@ label.custom-checkbox{
         padding-top: 21px;
     }
 }
+
+
+.main-section{
+
+    display: flex;
+    margin-bottom: 20px;
+
+    &__left{
+        width: 84.5%;
+        margin-right: 10px;
+
+        .top-info-wrap{
+            background-color: #30475E;
+        }
+        .top-info{
+            max-width: 1108px;
+            margin-left: auto;
+            padding: 22px 15px;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            &::after{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background-color: #30475E;
+            }
+
+            &__img{
+                margin-right: 30px;
+            }
+
+            &__info-box{
+                display: flex;
+                flex-direction: column;
+                flex-grow: 2;
+                margin-right: 15px;
+
+                h1{
+                    font-family: $Roboto;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 36px;
+                    line-height: 42px;
+                    color: #FFFFFF;
+                    margin: 0 0 10px;
+                }
+
+                .rating-span{
+
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 30px;
+
+                    &__top{
+                        display: flex;
+                    }
+
+                    .check-icon{
+                        margin-right: 8px;
+                    }
+
+                    &__country-specific{
+                        font-family: $Roboto;
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 14px;
+                        line-height: 16px;
+                        color: #FFFFFF;
+                    }
+                }
+
+                .btn{
+                    max-width: 163px;
+                }
+            }
+
+            &__reputation-box{
+                display: flex;
+                align-items: flex-end;
+
+                .reputation-box{
+
+                    display: flex;
+                    align-items: center;
+
+                    img{
+                        width: 45px;
+                        height: 45px;
+                    }
+                    span{
+                        font-weight: bold;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: #C2A57B;
+                    }
+                }
+
+                .award-box{
+                    position: relative;
+
+                    span{
+                        position: absolute;
+                        top: 33px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        font-weight: bold;
+                        font-size: 24px;
+                        line-height: 28px;
+                        color: #FFFFFF;
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+        .review-content-box{
+            margin-bottom: 50px;
+        }
+
+        .author-date{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-top: 9px;
+            .author{
+                margin-right: 5px;
+            }
+            .date{
+                margin-left: 5px;
+            }
+            .author,
+            .date{
+                font-family: $Roboto;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 16px;
+                color: #414040;
+            }
+        }
+
+        .review-major-details-box{
+            background-color: #F3F3F3;
+            padding: 26px 40px 29px 4px;
+            display: flex;
+            margin-bottom: 57px;
+
+            .left-side{
+                border-right: 1px solid #C2A57B;
+                padding-right: 35px;
+                max-width: 355px;
+                width: 100%;
+
+                .detail-line{
+                    display: flex;
+                    svg {
+                        margin-right: 12px;
+                        flex-basis: 22px;
+                    }
+                    .check{
+                        margin-right: 0;
+                    }
+                    span{
+                        flex-grow: 2;
+                    }
+                    &.ip{
+                        margin-bottom: 9px;
+                    }
+                    .bonus-text{
+                        font-weight: bold;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: #022141;
+                    }
+                    .bonus-name{
+                        font-size: 14px;
+                        line-height: 16px;
+                        color: #022141;
+                        text-transform: capitalize;
+                    }
+                    .tc-apply{
+                        font-size: 14px;
+                        line-height: 16px;
+                        color: #C2A57B;
+                    }
+                    .bonus-info{
+                        flex-grow: 2;
+                        flex-basis: 0;
+                    }
+                }
+
+                .residents{
+                    margin-bottom: 37px;
+                    span{
+                        font-weight: bold;
+                        font-size: 18px;
+                        line-height: 21px;
+                        color: #022141;
+                        img{
+                            margin-left: 7px;
+                            max-width: 21px;
+                        }
+                    }
+                }
+                .connection{
+                    margin-bottom: 45px;
+                }
+            }
+
+            .middle-side{
+                padding-left: 25px;
+                padding-right: 40px;
+                max-width: 328px;
+                width: 100%;
+                border-right: 1px solid #C2A57B;
+                .language-opt{
+
+                    span{
+                        margin-bottom: 10px;
+                        display: block;
+                    }
+
+                    img{
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        border: 3px solid #C2A57B;
+                        margin-right: 10px;
+                    }
+                    li{
+                        font-family: $Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: #022141;
+                        &:not(:last-of-type){
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+                .available-games{
+
+                    &__heading{
+                        display: flex;
+                        justify-content: space-between;
+                        button{
+                            font-family: $Roboto;
+                            font-style: normal;
+                            font-weight: bold;
+                            font-size: 14px;
+                            line-height: 16px;
+                            color: #C2A57B;
+                            padding: 0;
+                            background-color: transparent;
+                        }
+                    }
+
+                    ul{
+                        transition: height .3s;
+                        li{
+                            img{
+                                max-width: 25px;
+                                margin-right: 6px;
+                            }
+                            &.unavailable{
+                                img{
+                                    filter: grayscale(100%);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .payment-methods{
+                    &__heading{
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 15px;
+                        button{
+                            font-family: $Roboto;
+                            font-style: normal;
+                            font-weight: bold;
+                            font-size: 14px;
+                            line-height: 16px;
+                            color: #C2A57B;
+                            padding: 0;
+                            background-color: transparent;
+                        }
+                    }
+
+                    ul {
+
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin: 0;
+                        padding: 0 0 0 15px;
+
+                        li{
+                            max-width: 40px;
+                            margin-right: 16px;
+                            margin-bottom: 10px;
+                            &::before{
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right-side{
+                padding-left: 38px;
+
+                &>div{
+                    margin-bottom: 30px;
+                    &>span{
+                        font-size: 14px;
+                        line-height: 16px;
+                        color: #022141;
+                        margin-bottom: 11px;
+                        display: block;
+                    }
+                    &>p{
+                        font-weight: bold;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: #022141;
+    
+                    }
+                }
+            }
+        }
+
+        .review-facts-info{
+
+            h6{
+                margin: 0;
+                font-family: $FiraSans;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 20px;
+                letter-spacing: -0.822837px;
+                color: #022141;
+                margin-bottom: 10px;
+            }
+            .facts{
+                margin-bottom: 50px;
+            }
+            .pros-cons{
+                display: flex;
+                margin-bottom: 40px;
+
+                ul{
+                    margin-bottom: 0;
+                    li{
+                        font-family: $Roboto;
+                        line-height: 34px;
+                    }
+                }
+
+                .review-pros{
+                    margin-right: 63px;
+                }
+                .review-cons{
+
+                    li::before{
+                        color: #EF352F;
+                    }
+                }
+            }
+        }
+
+        .related-casinos{
+            margin-bottom: 28px;
+            &__list{
+                display: flex;
+                .related-casino{
+                    padding-right: 25px;
+                    display: flex;
+                    align-items: center;
+                    &:not(:last-of-type){
+                        border-right: 1px solid #C2A57B;
+                        margin-right: 30px;
+                    }
+
+                    img{
+                        max-width: 50px;
+                        margin-right: 10px;
+                        display: inline-block;
+                    }
+
+                    &>span{
+                        font-family: $Roboto;
+                        font-weight: bold;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: #022141;
+                        margin-right: 10px;
+                    }
+
+                    .rating{
+                        position: relative;
+
+                        span{
+                            position: absolute;
+                            top: 48%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            font-family: $Roboto;
+                            font-weight: bold;
+                            font-size: 14px;
+                            line-height: 16px;
+                            color: #022141;
+                            opacity: 0.7;
+                        }
+                    }
+                }
+            }
+        }
+
+        .complains-result{
+            padding: 35px 15px;
+            background-color: $GeneralColor;
+            h5{
+                font-family: $FiraSans;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 30px;
+                text-align: center;
+                letter-spacing: -0.822837px;
+                color: #FFFFFF;
+            }
+        }
+
+
+    }
+
+    &__right{
+        width: 27.5%;
+    }
+}
+
+.submit-complain-wrap{
+    background-repeat: no-repeat;
+}
+.submit-complain{
+    padding: 45px 55px 30px;
+
+    .complains-text-box{
+        width: 50%;
+        margin-left: auto;
+        p{
+            font-family: $FiraSans;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            letter-spacing: -0.822837px;
+            color: #022141;
+        }
+    }
+}
+
+
+.top-list-sidebar{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+
+    .sidebar-header{
+        display: flex;
+        align-items: center;
+        padding-left: 18px;
+        padding-right: 6px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #BFBFBF;
+        margin-bottom: 30px;
+        h6{
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+            text-align: center;
+            color: #022141;
+            margin: 0;
+        }
+    }
+    .sidebar-item{
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #C2A57B;
+        padding-bottom: 14px;
+        margin-bottom: 10px;
+
+        img{
+            max-width: 50px;
+            margin-right: 16px;
+        }
+
+        &>span{
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 19px;
+            color: #022141;
+            flex-grow: 2;
+        }
+
+        .rating-star{
+            position: relative;
+            span{
+                position: absolute;
+                top: 47%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 16px;
+                color: #FFFFFF;
+                opacity: 0.7;
+            }
+        }
+        
+    }
+
+    .show-all-casinos{
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 21px;
+        color: #C2A57B;
+        position: relative;
+        text-align: center;
+        padding-top: 6px;
+
+        svg{
+            position: absolute;
+            top: 50%;
+            right: 14%;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @import './css/footer'

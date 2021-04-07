@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import Filter from './Filter';
 import Tab from './Tab'
 
-export default function Tabs({ children }) {
+export default function Tabs(props) {
     
+    const children = props.children
     const [activeTab, setActiveTab] = useState(children[0].props.label)
 
     return (
@@ -35,7 +36,7 @@ export default function Tabs({ children }) {
                         })}
                     </div>
                     <div className="tab-filter column custom-medium-3">
-                        <Filter />
+                        <Filter filterSettings={props.filterSettings} setFilterSettings={props.setFilterSettings} />
                     </div>
                 </div>
             </div>

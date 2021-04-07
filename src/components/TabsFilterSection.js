@@ -9,14 +9,68 @@ import Parser from 'html-react-parser'
 
 export default function TabsFilterSection({ categoriesIncludingAllCasinos }) {
 
+    const initialResult = {
+        popularFilters: [],
+        forPlayersFrom: [],
+        availableGames: [],
+        gameProvider: [],
+        paymentMethods: [],
+        licensingAuthority: [],
+        withdrawalLimit: [],
+        currency: [],
+        websiteLanguage: [],
+        customerSupportLanguage: [],
+        liveChatLanguage: []
+    }
+
+    const [filterSettings, setFilterSettings] = useState(initialResult)
+    const [categReviewsToRender, setCategReviewsToRender] = useState(categoriesIncludingAllCasinos)
+
+    const filtrationHandler = (filterSettings) => {
+        console.log(categoriesIncludingAllCasinos);
+        console.log(filterSettings);
+
+        const newCategReviews = [...categReviewsToRender];
+
+        // for (const [key, valueArray] of Object.entries(filterSettings)) {
+        //     console.log('key', key);
+        //     console.log('valueArray', valueArray);
+        //     if(key === 'withdrawalLimit'){
+
+        //     } else {
+        //         for (const item of newCategReviews) {
+        //             console.log(item);
+        //             if(item.hasOwnProperty('reviews')){
+        //                 item.reviews.nodes = item.reviews.nodes.filter((casino) => {
+        //                     if(casino.cpt_reviews[key] !== null){
+        //                         casino.cpt_reviews[key].forEach((casinoKey) => {
+        //                             if(valueArray.includes(casinoKey)){
+        //                                 return casino
+        //                             }
+        //                         })
+        //                     }
+        //                 })
+        //             }
+        //         }
+        //     }
+        //     setCategReviewsToRender(newCategReviews)
+        // }
+
+        
+    }
+
+    useEffect(() => {
+        filtrationHandler(filterSettings)
+    }, [filterSettings])
+
     return (
         <div className="tabs-section filter-section">
-            <TabsWithFilter>
+            <TabsWithFilter setFilterSettings={setFilterSettings} filterSettings={filterSettings}>
 
-                {categoriesIncludingAllCasinos.map(category => {
+                {categReviewsToRender.map(category => {
                     
                     const reviews = category.reviews.nodes;
-
+                    
                     return (
                         <div total={reviews.length} label={category.name} key={shortid.generate()} image={category.tax_review_categories.termImage.mediaItemUrl}>
                             <div className="tab-content__wrapper row" >
