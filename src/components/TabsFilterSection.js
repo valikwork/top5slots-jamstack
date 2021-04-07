@@ -27,8 +27,6 @@ export default function TabsFilterSection({ categoriesIncludingAllCasinos }) {
     const [categReviewsToRender, setCategReviewsToRender] = useState(categoriesIncludingAllCasinos)
 
     const filtrationHandler = (filterSettings) => {
-        console.log(categoriesIncludingAllCasinos);
-        console.log(filterSettings);
 
         const newCategReviews = [...categReviewsToRender];
 

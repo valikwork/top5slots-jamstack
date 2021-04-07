@@ -210,7 +210,6 @@ query($id: ID!) {
 export default function ReviewSingle({ data }) {
 
     const { review } = data.wpgraphql
-    console.log(review);
 
     const bonusesForList = []
     const allBonuses = [ 
@@ -225,7 +224,6 @@ export default function ReviewSingle({ data }) {
             bonusesForList.push(bonus)
         }
     })
-    console.log(bonusesForList);
 
     const MainSection = () => {
         
@@ -437,7 +435,7 @@ export default function ReviewSingle({ data }) {
                                     <p><b>${review.cpt_reviews.withdrawalLimit}</b> per month</p>
                                 </div>
                             )}
-                            {review.cpt_reviews.licensingAuthority.length && (
+                            {review.cpt_reviews.licensingAuthority && (
                                 <div className="withdrawal-limit">
                                     <span>Licensing Authority</span>
                                     {review.cpt_reviews.licensingAuthority.map(license => {
