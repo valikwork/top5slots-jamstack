@@ -448,7 +448,7 @@ export default function ReviewSingle({ data }) {
 
                     <div className="review-facts-info">
 
-                        {review.cpt_reviews.interestingFacts.length && (
+                        {review.cpt_reviews.interestingFacts && (
                             <div className="facts">
                                 <h6>Interesting Facts</h6>
                                 {review.cpt_reviews.interestingFacts.map(fact => (
@@ -458,7 +458,7 @@ export default function ReviewSingle({ data }) {
                         )}
 
                         <div className="pros-cons">
-                            {review.cpt_reviews.pros.length && (
+                            {review.cpt_reviews.pros && (
                                 <div className="review-pros">
                                     <h6>Positives</h6>
                                     <ul>
@@ -468,7 +468,7 @@ export default function ReviewSingle({ data }) {
                                     </ul>
                                 </div>
                             )}
-                            {review.cpt_reviews.cons.length && (
+                            {review.cpt_reviews.cons && (
                                 <div className="review-cons">
                                     <h6>Negatives</h6>
                                     <ul>
@@ -480,7 +480,7 @@ export default function ReviewSingle({ data }) {
                             )}
                             
                         </div>
-                        {review.cpt_reviews.relatedCasinos.length && (
+                        {review.cpt_reviews.relatedCasinos && (
                             <div className="related-casinos">
                                 <h6>Casinos related to Rox Casino ({review.cpt_reviews.relatedCasinos.length})</h6>
                                 <div className="related-casinos__list">
