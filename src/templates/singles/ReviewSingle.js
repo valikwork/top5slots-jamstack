@@ -8,7 +8,7 @@ import ExpandableText from '../../components/dropdown/ExpandableText'
 import PaymentMethodsAccordion from '../../components/dropdown/PaymentMethodsAccordion'
 import GameProvidersAccordion from '../../components/dropdown/GameProvidersAccordion'
 import ComplainFormSection from '../../components/ComplainFormSection'
-import DropdownWrap from '../../components/dropdown/dropdownWrap'
+import DropdownWrap from '../../components/dropdown/DropdownWrap'
 import Parser from 'html-react-parser'
 import Helmet from "react-helmet"
 
