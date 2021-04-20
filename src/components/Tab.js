@@ -15,7 +15,7 @@ export default function Tab( { label, onClick, activeTab, image, total } ) {
         >
             <img src={image} />
         {label}
-        {total && ` (${total})`}
+        {total !== undefined && ` (${total})`}
         </li>
     )
 }

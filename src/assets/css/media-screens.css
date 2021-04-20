@@ -5,21 +5,28 @@
 @media only screen and (max-width: 40em) {
     h1 {
         font-size: 32px;
+        line-height: 35px;
     }
     h2 {
         font-size: 28px;
+        line-height: 32px;
     }
     .page-wrap h2 {
         font-size: 28px;
+        line-height: 32px;
     }
     h3 {
         font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 20px;
     }
     h4 {
         font-size: 16px;
+        line-height: 18px;
     }
     h5 {
         font-size: 20px;
+        line-height: 24px;
     }
     body,
     p,
@@ -32,7 +39,7 @@
         line-height: 1.6;
     }
     ul li:before {
-        top: 7px;
+        /* top: 7px; */
     }
     .btn {
         font-size: 14px;
@@ -1735,6 +1742,501 @@
     .contact-page-info-box--map{
         height: 200px;
     }
+    .main-section{
+        flex-direction: column;
+        padding: 0;
+    }
+    .main-section__left{
+        width: 100%;
+        margin-right: 0;
+    }
+    .main-section__left .top-info{
+        flex-wrap: wrap;
+    }
+    .main-section__left .top-info__img{
+        width: 100%;
+        flex-grow: 0;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .main-section__left .top-info__info-box{
+        width: 100%;
+        flex-grow: 0;
+        margin-right: 0;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .main-section__left .top-info__reputation-box{
+        width: 100%;
+        justify-content: space-around;
+    }
+    .main-section__left .top-info__info-box h1{
+        text-align: center;
+    }
+    .main-section__left .author-date .author{
+        width: 33%;
+    } 
+    .main-section__left .author-date .date{
+        width: 67%;
+        text-align: center;
+    }
+    .main-section__left .author-date{
+        margin-bottom: 15px;
+        justify-content: space-between;
+    }
+    .main-section__left .review-content-box{
+        padding: 0 15px;
+    }
+    .review-major-details-box-wrap{
+        padding: 0 15px;
+    }
+    .main-section__left .review-major-details-box{
+        padding: 26px 15px 29px;
+    }
+    .main-section__left .review-major-details-box{
+        flex-direction: column;
+    }
+    .main-bonus-list__item{
+        flex-direction: column;
+        padding: 24px 18px 30px;
+    }
+    .main-bonus-list__item .left-section{
+        padding-right: 0;
+        border-right: none;
+        margin-bottom: 15px;
+    }
+    .main-bonus-list__item .left-section .dropdown-wrap .head-wrap p, 
+    .main-bonus-list__item .left-section .dropdown-wrap .head-wrap span,
+    .main-bonus-list__item .left-section .dropdown-wrap .body-wrap p, 
+    .main-bonus-list__item .left-section .dropdown-wrap .body-wrap span,
+    .main-bonus-list__item .left-section .final-comment p, 
+    .main-bonus-list__item .left-section .final-comment span{
+        font-size: 15px;
+        line-height: 21px;
+    }
+    .main-bonus-list__item .right-section{
+        padding-left: 0;
+    }
+    .review-facts-info{
+        padding: 0 15px;
+    }
+    .main-section__left .related-casinos__list .related-casino{
+        padding-right: 0;
+        min-height: 60px;
+    }
+    .main-section__left .related-casinos__list .related-casino:not(:last-of-type){
+        margin-right: 0;
+        border-right: none;
+        border-bottom: 1px solid #C2A57B;
+    }
+    .main-section__left .related-casinos__list{
+        flex-direction: column;
+    }
+    .main-section__right {
+        width: 100%;
+    }
+    .top-list-sidebar .sidebar-header{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .top-list-sidebar .sidebar-header img,
+    .top-list-sidebar .sidebar-header h6{
+        margin-right: 15px;
+    }
+    .submit-complain-wrap{
+        background-size: cover;
+        background-position-x: 75%;
+    }
+    .main-bonus-list h2{
+        font-size: 30px;
+        line-height: 35px;
+        margin-bottom: 40px;
+    }
+    .main-bonus-list{
+        padding: 40px 0;
+    }
+    .main-bonus-list__item .right-section .review-info{
+        flex-direction: column;
+    }
+    .main-bonus-list__item .right-section .review-info > img{
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .main-bonus-list__item .left-section .name{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .main-bonus-list__item .left-section .exlusive-text{
+        padding: 10px 12px 10px 9px;
+    }
+    .main-bonus-list__item .left-section .dropdown-wrap .head-wrap .head img{
+        margin-right: 15px;
+    }
+    .main-bonus-list__item .left-section .final-comment svg{
+        margin-right: 15px;
+    }
+    .main-bonus-list__item .left-section .dropdown-wrap .body-wrap{
+        padding: 0 15px;
+    }
+    .main-bonus-list__item .left-section .dropdown-wrap.open .body-wrap {
+        padding: 15px;
+    }
+    .pm-section{
+        padding: 30px 0;
+    }
+    .pm-section h2{
+        margin-bottom: 35px;
+    }
+    .pm__table--head{
+        padding: 10px;
+    }
+    .pm__table--head span{
+        font-size: 11px;
+        line-height: 16px;
+        flex-grow: 0;
+        width: 25%;
+    }
+    .pm__table--body-row img{
+        max-width: 50px;
+        margin-right: 0;
+    }
+    .pm__table--body-row span{
+        width: 25%;
+        font-size: 14px;
+        line-height: 25px;
+    }
+    .pm__table--body-row span:first-of-type{
+        width: 25%;
+        flex-direction: column;
+    }
+    .pm__table--body-row{
+        padding: 0 10px; 
+    }
+    .main-section__left .review-major-details-box .left-side,
+    .main-section__left .review-major-details-box .middle-side{
+        border-right: none;
+        padding: 0;
+    }
+    .bonus-list{
+        margin-bottom: 15px;
+    }
+    .middle-side ul li::before{
+        top: 0;
+    }
+    .game-provider ul li::before{
+        top: -11px;
+    }
+    .main-section__left .review-major-details-box .right-side{
+        padding-left: 0;
+    }
+    .main-section__left .review-facts-info .pros-cons{
+        flex-direction: column;
+    }
+    .main-section__left .review-facts-info .facts{
+        margin-bottom: 15px;
+    }
+    .main-section__left .review-facts-info .pros-cons .review-pros{
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .related-casino .rating{
+        height: auto;
+    }
+    .main-section__left .related-casinos__list .related-casino > span{
+        flex-grow: 2;
+    }
+    .submit-complain{
+        padding: 30px 15px;
+    }
+    .submit-complain .complains-text-box{
+        width: 100%;
+    }
+    .review-games h2.column{
+        margin-bottom: 30px;
+    }
+    .review-games__list{
+        flex-direction: column;
+    }
+    .review-games__list .game-category:not(:last-of-type){
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .review-games__list .game-category img{
+        margin-bottom: 0;
+    }
+    .review-game-providers{
+        padding-top: 30px;
+    }
+    .review-game-providers__list{
+        flex-direction: column;
+        align-items: center;
+    }
+    .review-game-providers .provider:not(:last-of-type){
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .single-review-btn{
+        max-width: 184px;
+    }
+    .main-bonus-list__item .left-section .present-text p span{
+        font-size: 19px;
+        line-height: 25px; 
+    }
+    .main-bonus-list__item .left-section .exlusive-text span p{
+        font-size: 15px;
+        line-height: 21px;
+    }
+    .review-page-heading{
+        padding: 40px 0;
+    }
+    .review-page-heading__heading h1{
+        font-size: 36px;
+        line-height: 36px;  
+    }
+    .review-page-heading__heading p{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .tab-content-with-filter{
+        padding: 50px 0;
+        flex-direction: column-reverse;
+        display: flex;
+    }
+    .tab-content-with-filter .tab-content__review--img__decor{
+        top: 6px;
+        left: 90%;
+    }
+    .tab-content-with-filter .tab-content__review--img{
+        max-width: unset;
+    }
+    .tab-content-with-filter .tab-content__review--text-block{
+        flex-direction: column;
+    }
+    .tab-content-with-filter .tab-content__review--text-block-left{
+        border-right: none;
+        max-width: unset;
+        margin-bottom: 30px;
+        padding: 0 15px;
+    }
+    .tab-content-with-filter .tab-content__review--text-block-right{
+        max-width: unset;
+    }
+    .tab-filter-wrap .filter-heading h6,
+    .filter-item__head span{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .why-us__list{
+        margin-bottom: 30px;
+    }
+    .why-us__banner{
+        padding: 50px 15px;
+        justify-content: center;
+    }
+    .why-us__banner .info-box{
+        width: 100%;
+        text-align: center;
+    }
+    .why-us__banner .info-box p{
+        max-width: unset;
+    }
+    .geo-rating__heading h2{
+        font-size: 31px;
+        line-height: 31px;
+        margin-bottom: 30px;
+    }
+    .geo-rating__heading h2,
+    .geo-rating__heading p{
+        position: relative;
+        z-index: 2;
+    }
+    .geo-rating__info-box-top{
+        flex-direction: column;
+    }
+    .geo-rating__info-box-top .info-circle{
+        margin: 15px 0;
+    }
+    .geo-rating__info-box-list.left-list{
+        margin-bottom: 0;
+    }
+    .before-playing__heading h2{
+        position: relative;
+        z-index: 2;
+    }
+    .before-playing__body-each-wrap{
+        position: relative;
+        z-index: 2;
+    }
+    .before-playing__body-each .text-box{
+        padding: 25px;
+        padding-top: 117px;
+    }
+    .country-importance__body-each .text-box{
+        padding: 25px;
+        padding-top: 130px;
+    }
+    .before-playing__heading{
+        margin-bottom: 30px;
+    }
+    .geo-rating__info-box-list .list-item-wrap .list-item-img-box{
+        top: 127px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .tutorial__heading h2{
+        z-index: 2;
+        position: relative;
+    }
+    .tutorial__body-top-list-item,
+    .tutorial__body-bottom-list-item{
+        padding: 25px;
+    }
+    .tutorial__body-top-list-item svg,
+    .tutorial__body-bottom-list-item img{
+        width: 75px;  
+    }
+    .tutorial__body-top-list-item h6,
+    .tutorial__body-bottom-list-item h6{
+        font-size: 26px;
+        line-height: 33px;
+    }
+    .tutorial__body-top{
+        margin-bottom: 30px;
+    }
+    .bonus-section__bottom-link{
+        margin-top: 0;
+    }
+    .bonus-section__recom{
+        margin-bottom: 45px;
+    }
+    .faq__each-item-head h6{
+        font-size: 23px;
+        line-height: 33px;
+    }
+    .text-content{
+        padding: 50px 0;
+    }
+    .tabs-section.filter-section .tab-list{
+        padding: 0;
+    }
+    .why-us{
+        padding: 35px 0;
+    }
+    .why-us__heading h2{
+        font-size: 35px;
+        line-height: 40px;
+    }
+    .why-us__heading{
+        margin-bottom: 35px;
+    }
+    .why-us__list--each img{
+        max-width: 66px;
+    }
+    .why-us__list--each h6{
+        font-size: 26px;
+        line-height: 31px;
+    }
+    .why-us__banner{
+        background-image: none !important;
+    }
+    .why-us__banner .info-box h6{
+        font-size: 57px;
+        line-height: 60px;
+    }
+    .why-us__banner .info-box p{
+        font-size: 17.6373px;
+        line-height: 141.34%;
+        margin: 0 0 45px;
+    }
+    .geo-rating__wrap{
+        padding: 50px 0;
+    }
+    .geo-rating__info-box-top h5{
+        font-size: 33px;
+        line-height: 50px;
+    }
+    .geo-rating__info-box-list .list-item-wrap{
+        flex-direction: column;
+        align-items: center;
+    }
+    .geo-rating__info-box-list .list-item-wrap svg{
+        transform: rotate(90deg);
+        top: 48px;
+        position: relative;
+    }
+    .geo-rating__info-box-list .list-item-wrap .list-item-text-box{
+        padding: 73px 20px 30px;
+    }
+    .before-playing__body-each .number-box svg{
+        width: 100px;
+        height: 100px;
+    }
+    .before-playing__body-each .text-box h5{
+        font-size: 24px;
+        line-height: 33px;
+    }
+    .custom-small-10{
+        width: 100%;
+    }
+    .tutorial__body-top-list-item-wrap,
+    .tutorial__body-bottom-list-item-wrap{
+        padding: 0 15px ;
+    }
+    .bonus-section{
+        padding: 50px 0;
+    }
+    .bonus-section__heading{
+        margin-bottom: 35px;
+    }
+    .bonus-section__recom--heading span{
+        font-size: 24px;
+        line-height: 28px;
+    }
+    .faq{
+        padding: 50px 0;
+    }
+    .faq__heading{
+        margin-bottom: 35px;
+    }
+    .faq__heading h2{
+        font-size: 32px;
+        line-height: 42px;
+    }
+    .faq__each-item.open .toggle-indicator,
+    .faq__each-item-head .toggle-indicator{
+        width: 40px;
+        height: 75px;
+        font-size: 34px;
+        line-height: 46px;
+        flex-shrink: 0;
+    }
+    .faq__each-item-head{
+        align-items: flex-start;
+        padding: 5px;
+    }
+    .faq__each-item.open .faq__each-item-body{
+        padding: 25px;
+    }
+    .custom-medium-3{
+        width: 100%;
+        padding: 0 15px;
+    }
+    .tab-filter{
+        margin-bottom: 30px;
+    }
+    .custom-medium-9{
+        width: 100%;
+    }
+    .tab-content{
+        padding: 0 15px;
+    }
+    .tab-content-with-filter .tab-content__review--text-block-left .buttons{
+        flex-direction: column;
+    }
+    .tab-content-with-filter .tab-content__review--text-block-left .buttons .btn:first-of-type{
+        margin-bottom: 15px;
+    }
+
 
 }
 
@@ -1838,18 +2340,24 @@
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
     h1 {
         font-size: 40px;
+        line-height: 45px;
     }
     h2 {
         font-size: 36px;
+        line-height: 40px;
     }
     .page-wrap h2 {
         font-size: 36px;
+        line-height: 40px;
     }
     h3 {
         font-size: 26px;
+        line-height: 30px;
+        margin-bottom: 35px;
     }
     h4 {
         font-size: 18px;
+        line-height: 20px;
     }
     body,
     p,
@@ -2861,6 +3369,241 @@
     .contact-page-content-box{
         padding: 48px 30px;
     }
+    .main-section{
+        flex-direction: column;
+        padding: 0;
+    }
+    .main-section__left{
+        width: 100%;
+        margin-right: 0;
+    }
+    .main-section__left .top-info{
+        flex-wrap: wrap;
+    }
+    .main-section__left .top-info__img{
+        width: 45%;
+        flex-grow: 0;
+        margin-right: 15px;
+    }
+    .main-section__left .top-info__info-box{
+        width: 50%;
+        flex-grow: 0;
+        margin-right: 0;
+        align-items: center;
+    }
+    .main-section__left .top-info__reputation-box{
+        width: 100%;
+        justify-content: space-around;
+    }
+    .main-section__left .top-info__info-box h1{
+        text-align: center;
+    }
+    .main-section__left .review-content-box{
+        padding: 0 15px;
+    }
+    .review-major-details-box-wrap{
+        padding: 0 15px;
+    }
+    .main-section__left .review-major-details-box{
+        padding: 26px 15px 29px;
+    }
+    .review-facts-info{
+        padding: 0 15px;
+    }
+    .main-section__left .related-casinos__list .related-casino:not(:last-of-type){
+        margin-right: 10px;
+    }
+    .main-section__right {
+        width: 100%;
+    }
+    .top-list-sidebar .sidebar-header{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .top-list-sidebar .sidebar-header img,
+    .top-list-sidebar .sidebar-header h6{
+        margin-right: 15px;
+    }
+    .submit-complain-wrap{
+        background-size: cover;
+        background-position-x: 75%;
+    }
+    .main-bonus-list h2{
+        font-size: 30px;
+        line-height: 35px;
+        margin-bottom: 40px;
+    }
+    .main-bonus-list{
+        padding: 40px 0;
+    }
+    .main-bonus-list__item .right-section .review-info{
+        flex-direction: column;
+    }
+    .main-bonus-list__item .right-section .review-info > img{
+        margin-right: 0;
+    }
+    .main-bonus-list__item .left-section .name{
+        font-size: 30px;
+        line-height: 37px;
+    }
+    .main-bonus-list__item .left-section .exlusive-text{
+        padding: 10px 12px 10px 9px;
+    }
+    .main-bonus-list__item .left-section .dropdown-wrap .head-wrap .head img{
+        margin-right: 15px;
+    }
+    .main-bonus-list__item .left-section .final-comment svg{
+        margin-right: 15px;
+    }
+    .main-bonus-list__item .left-section .dropdown-wrap .body-wrap{
+        padding: 0 15px;
+    }
+    .main-bonus-list__item .left-section .dropdown-wrap.open .body-wrap {
+        padding: 15px;
+    }
+    .pm__table--head{
+        padding: 15px 25px;
+    }
+    .pm__table--head span{
+        font-size: 19px;
+        line-height: 23px;
+        flex-grow: 0;
+        width: 25%;
+    }
+    .pm__table--body-row img{
+        max-width: 75px;
+        margin-right: 10px;
+    }
+    .pm__table--body-row span{
+        width: 25%;
+    }
+    .pm__table--body-row span:first-of-type{
+        width: 25%;
+        flex-direction: column;
+    }
+    .pm__table--body-row{
+        padding: 0 25px; 
+    }
+
+    /* awdawd */
+    .review-page-heading{
+        padding: 40px 0;
+    }
+    .review-page-heading__heading h1{
+        font-size: 36px;
+        line-height: 36px;  
+    }
+    .review-page-heading__heading p{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .tab-content-with-filter{
+        padding: 50px 0;
+    }
+    .tab-content-with-filter .tab-content__review--img__decor{
+        top: 6px;
+        left: 90%;
+    }
+    .tab-content-with-filter .tab-content__review--img{
+        max-width: unset;
+    }
+    .tab-content-with-filter .tab-content__review--text-block{
+        flex-direction: column;
+    }
+    .tab-content-with-filter .tab-content__review--text-block-left{
+        border-right: none;
+        max-width: unset;
+        margin-bottom: 30px;
+    }
+    .tab-content-with-filter .tab-content__review--text-block-right{
+        max-width: unset;
+    }
+    .tab-filter-wrap .filter-heading h6,
+    .filter-item__head span{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .why-us__list{
+        margin-bottom: 30px;
+    }
+    .why-us__banner{
+        padding: 50px 15px;
+        justify-content: center;
+    }
+    .why-us__banner .info-box{
+        width: 100%;
+        text-align: center;
+    }
+    .why-us__banner .info-box p{
+        max-width: unset;
+    }
+    .geo-rating__heading h2,
+    .geo-rating__heading p{
+        position: relative;
+        z-index: 2;
+    }
+    .geo-rating__info-box-top{
+        flex-direction: column;
+    }
+    .geo-rating__info-box-top .info-circle{
+        margin: 15px 0;
+    }
+    .geo-rating__info-box-list.left-list{
+        margin-bottom: 30px;
+    }
+    .before-playing__heading h2{
+        position: relative;
+        z-index: 2;
+    }
+    .before-playing__body-each-wrap{
+        position: relative;
+        z-index: 2;
+    }
+    .before-playing__body-each .text-box,
+    .country-importance__body-each .text-box{
+        padding: 25px;
+        padding-top: 140px;
+    }
+    .before-playing__heading{
+        margin-bottom: 30px;
+    }
+    .geo-rating__info-box-list .list-item-wrap .list-item-img-box{
+        top: 98px;
+    }
+    .tutorial__heading h2{
+        z-index: 2;
+        position: relative;
+    }
+    .tutorial__body-top-list-item,
+    .tutorial__body-bottom-list-item{
+        padding: 25px;
+    }
+    .tutorial__body-top-list-item svg,
+    .tutorial__body-bottom-list-item img{
+        width: 75px;  
+    }
+    .tutorial__body-top-list-item h6,
+    .tutorial__body-bottom-list-item h6{
+        font-size: 26px;
+        line-height: 33px;
+    }
+    .tutorial__body-top{
+        margin-bottom: 30px;
+    }
+    .bonus-section__bottom-link{
+        margin-top: 0;
+    }
+    .bonus-section__recom{
+        margin-bottom: 45px;
+    }
+    .faq__each-item-head h6{
+        font-size: 29px;
+        line-height: 44px;
+    }
+    .text-content{
+        padding: 50px 0;
+    }
+
 }
 
 
@@ -2970,6 +3713,19 @@
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
     .about-us-section__advantages--each .text-section{
         padding: 50px;
+    }
+    .top-list-sidebar .sidebar-header{
+        padding-left: 0;
+    }
+    .top-list-sidebar .show-all-casinos svg{
+        right: 0;
+    }
+    .main-section__left .top-info__reputation-box .reputation-box{
+        flex-direction: column;
+        
+    }
+    .main-section__left .top-info__reputation-box .reputation-box span{
+        text-align: center;
     }
 }
 

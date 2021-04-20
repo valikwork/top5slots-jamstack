@@ -92,7 +92,7 @@ exports.createPages = async({ actions, graphql }) => {
             default:
                 actions.createPage({
                     path: page.uri,
-                    component: require.resolve("./src/templates/Default.js"),
+                    component: require.resolve("./src/templates/DefaultPageTemplate.js"),
                     context: {
                         id: page.id,
                     },

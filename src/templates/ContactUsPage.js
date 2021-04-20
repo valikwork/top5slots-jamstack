@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import ContactUsForm from "../components/ContactUsForm"
 import shortid from 'shortid';
 import GoogleMapReact from 'google-map-react';
+import Helmet from "react-helmet"
 
 export const query = graphql`
 query($id: ID!) {
@@ -48,9 +49,6 @@ query($id: ID!) {
 export default function ContactUsPage({ data }) {
 	const { socialLinks } = data.wpgraphql.themeFooterSettings.opt_footer
 	const { page } = data.wpgraphql
-		
-	
-	console.log(page)
 	const pageCssClass = "contact-page"
 	const mapSettings = {
 		lat: page.tmpl_contact_us.mapLatitude || 59.955413,
@@ -59,6 +57,14 @@ export default function ContactUsPage({ data }) {
 
 	return (
 		<Layout className={pageCssClass}>
+			<Helmet
+                htmlAttributes={{ lang: "en", amp: undefined }}
+                title={page.seo.title}
+                meta={[
+                    { name: "description", content: page.seo.metaDesc },
+                    { property: "og:type", content: page.seo.opengraphType },
+                ]}
+            />
 			<div className={`${pageCssClass}-wrap`} style={{ backgroundImage: `url(${page.tmpl_contact_us.backgroundImage.mediaItemUrl})`}}>
 				<div className={`${pageCssClass}-content-box`}>
 					{ page.tmpl_contact_us.formHeading && <h1 className={`${pageCssClass}__heading`} >{page.tmpl_contact_us.formHeading}</h1> }

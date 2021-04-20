@@ -9,6 +9,7 @@ import MatchHeight from '../functions/MatchHeight';
 import Parser from "html-react-parser"
 import Equalizer from "react-equalizer";
 import shortid from 'shortid';
+import Helmet from "react-helmet"
  
 
 import tabDecorLeft from '../assets/images/tab-section-left.png';
@@ -663,7 +664,7 @@ export default function HomePage({ data }) {
                                 {post.featuredImage && <img src={post.featuredImage.node.mediaItemUrl} alt=""/>}
                                 <div className="descr-box">
                                     <h6>{post.title}</h6>
-                                    {Parser(post.excerpt)}
+                                    {Parser(post.excerpt ? post.excerpt : '')}
                                 </div>
                             </Link>
                         )
@@ -683,6 +684,14 @@ export default function HomePage({ data }) {
 
     return (
         <Layout>
+            <Helmet
+                htmlAttributes={{ lang: "en", amp: undefined }}
+                title={page.seo.title}
+                meta={[
+                    { name: "description", content: page.seo.metaDesc },
+                    { property: "og:type", content: page.seo.opengraphType },
+                ]}
+            />
             <HeroSearchSection />
             <CategoryTabsSection />
             <GamesSection />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import allGamesCategories from '../data/AllGamesCategories';
+import allGamesCategories from '../../data/AllGamesCategories';
 
 export default function AvailableGamesAccordion({ availableGames }) {
     

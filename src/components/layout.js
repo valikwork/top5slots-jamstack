@@ -22,7 +22,7 @@ const Layout = props => {
   return (
     <>
       <Header />
-      <main className={mainClass}>{children}</main>
+        <main className={mainClass}>{children}</main>
       <Footer />
     </>
   )

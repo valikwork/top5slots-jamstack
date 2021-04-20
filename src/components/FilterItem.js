@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import shortid from 'shortid';
 
-export default function FilterItem({ data, name, svg, filterHandle, filtrationCategory }) {
+function FilterItem({ data, name, svg, filterHandle, filtrationCategory }) {
 
     const [isOpen, setOpen] = useState(false)
     const [rotation, setRotation] = useState(0)
@@ -9,10 +8,7 @@ export default function FilterItem({ data, name, svg, filterHandle, filtrationCa
     
 
     useEffect(() => {
-        
-        
         filterHandle({ [filtrationCategory] : arrayOfCheckedOptions})
-        
     }, [arrayOfCheckedOptions])
     
     useEffect(() => {
@@ -26,25 +22,25 @@ export default function FilterItem({ data, name, svg, filterHandle, filtrationCa
     const prepareResult = (slug) => {
         if(!arrayOfCheckedOptions.includes(slug)){
             setArrayOfCheckedOptions(rest => [...rest, slug])
-            console.log('added');
+            // console.log('added');
         }
         if(arrayOfCheckedOptions.includes(slug)){
             setArrayOfCheckedOptions(rest => rest.filter(item => item !== slug))
-            console.log('deleted');
+            // console.log('deleted');
         }
     }
 
     
 
     return (
-        <div className="filter-item">
+        <div className={`filter-item ${isOpen ? 'open' : ''}`}>
             <div onClick={() => setOpen(!isOpen)} className="filter-item__head">
                 <span>{name}</span>
                 <svg style={{ transform: `rotateZ(${rotation}deg)` }} width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.4999 0.200012L7.84293 11.6L0.299927 0.200012L15.4999 0.200012Z" fill="#5FCC6A"/>
                 </svg>
             </div>
-            {isOpen && data && (
+            {data && (
                 <div className="filter-item__body">
                     {data.map(item => {
                         return (
@@ -63,8 +59,6 @@ export default function FilterItem({ data, name, svg, filterHandle, filtrationCa
                                 <span className="checkbox-name">{item.name || item.title}</span>
                             </label>
                         )
-                        
-                        
                     })}
                 </div>
             )}
@@ -72,3 +66,6 @@ export default function FilterItem({ data, name, svg, filterHandle, filtrationCa
         </div>
     )
 }
+
+// export default withLocation(FilterItem)
+export default FilterItem

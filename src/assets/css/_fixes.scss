@@ -19,6 +19,9 @@ main{
 input[type='search']{
     box-sizing: border-box;
 }
+svg:not(:root){
+    flex-shrink: 0;
+}
 .wrapper{
     max-width: 1430px;
     margin: 0 auto;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { graphql, Link } from "gatsby"
 import Layout from '../components/layout'
 import shortid from 'shortid';
-import ExpandableCard from '../components/ExpandableCard';
+import ExpandableCard from '../components/dropdown/ExpandableCard';
 import NonExpandableCard from '../components/NonExpandableCard';
 import Equalizer from "react-equalizer";
 import Parser from "html-react-parser"
@@ -11,6 +11,7 @@ import DateHandler from "../functions/DateHandler";
 import MatchHeight from '../functions/MatchHeight';
 import FAQPanel from '../components/FAQPanel';
 import TabsFilterSection from '../components/TabsFilterSection';
+import Helmet from "react-helmet"
 
 //Images
 import tabDecorLeft from '../assets/images/tab-section-left.png';
@@ -63,6 +64,7 @@ export const query = graphql`
                                     availableGames {
                                         uri
                                         name
+                                        slug
                                     }
                                     bonusText
                                     bonusSubtext
@@ -381,6 +383,7 @@ export const query = graphql`
                         availableGames {
                             uri
                             name
+                            slug
                         }
                         bonusText
                         bonusSubtext
@@ -850,7 +853,7 @@ export default function ReviewArchivePage({ data }) {
         const bonusSectionHeading = page.tmpl_review_archive_page.bonusesSectionHeading;
         const bonusesSectionRecommData = page.tmpl_review_archive_page.bonusesShowRecomended;
         const bonusesSectionLatestData = page.tmpl_review_archive_page.bonusesShowLatest;
-        const columnClass = bonusesSectionRecommData.length > 0 && bonusesSectionLatestData.length > 0 ? 'medium-6' : 'medium-12';
+        const columnClass = bonusesSectionRecommData.length > 0 && bonusesSectionLatestData.length > 0 ? 'medium-12' : 'medium-12';
 
         return (
             <div className={bonusSectionCssClass}>
@@ -1027,6 +1030,14 @@ export default function ReviewArchivePage({ data }) {
 
     return (
         <Layout>
+            <Helmet
+                htmlAttributes={{ lang: "en", amp: undefined }}
+                title={page.seo.title}
+                meta={[
+                    { name: "description", content: page.seo.metaDesc },
+                    { property: "og:type", content: page.seo.opengraphType },
+                ]}
+            />
             <HeadingSection />
             <CasinosTabSection />
             <WhyUsSection />
@@ -1038,7 +1049,6 @@ export default function ReviewArchivePage({ data }) {
             <FAQSection />
             <PostsSection />
             <TextSection />
-
         </Layout>
     )
 }
